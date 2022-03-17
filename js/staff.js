@@ -11,9 +11,12 @@ async function addcourse() {
     var title = document.getElementById('title').value;
     var description = document.getElementById('description').value;
     var link = document.getElementById('link').value;
+    var link = document.getElementById('stafflink').value;
+
+
 
     console.log(link);
-    if (title != '' && description != '' && link != '') {
+    if (title != '' && description != '' && link != '' && stafflink != '') {
 
         console.log('hii');
 
@@ -23,7 +26,7 @@ async function addcourse() {
                 title: document.getElementById('title').value,
                 description: document.getElementById('description').value,
                 course: document.getElementById('link').value,
-
+                stafflink: document.getElementById('stafflink').value,
             }),
 
             headers: {

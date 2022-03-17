@@ -6,18 +6,185 @@
     <meta charset=UTF-8>
     <script src="js/register.js"></script>
 
-    <title>Hello World!</title>
+    <title>Student Profile</title>
+
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta charset="utf-8">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+    <link href="http://netdna.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css">
+    <style type="text/css">
+        a:link {
+            text-decoration: none;
+        }
+
+        .order-card {
+            color: rgb(255, 255, 255);
+        }
+
+        .bg-c-blue {
+            background: #04868f;
+        }
+
+        .bg-c-green {
+            background: #4C51BF;
+        }
+
+        .bg-c-yellow {
+            background: #F56565;
+        }
+
+        .bg-c-pink {
+            background: #663a30;
+        }
+
+
+        .card {
+
+            -webkit-box-shadow: 0 1px 2.94px 0.06px rgba(4, 26, 55, 0.16);
+            box-shadow: 0 1px 2.94px 0.06px rgba(4, 26, 55, 0.16);
+            border: 1px solid black;
+            margin-bottom: 1px;
+            -webkit-transition: all 0.3s ease-in-out;
+            transition: all 0.3s ease-in-out;
+        }
+
+        .card .card-block {
+            padding: 25px;
+        }
+
+        .order-card i {
+            font-size: 27px;
+        }
+
+        .f-left {
+            float: left;
+        }
+
+        .f-right {
+            float: right;
+        }
+
+        header {
+            left: 0px;
+            right: 0px;
+        }
+    </style>
+    <style media="screen">
+        a:link {
+            text-decoration: none;
+        }
+
+        h6 {
+            text-align: center;
+        }
+
+        .row {
+            margin: 100px;
+        }
+
+        th,
+        td {
+            padding: 35px;
+        }
+
+        header {
+            position: fixed;
+            background: #22242A;
+            padding: 16px;
+            width: 100%;
+            z-index: 1;
+        }
+
+        .left_area h3 {
+            color: #fff;
+            margin: 0px;
+            text-transform: uppercase;
+            font-size: 22px;
+            font-weight: 900;
+        }
+
+        .left_area span {
+            color: #19B3D3;
+        }
+
+        .logout_btn {
+            padding: 5px;
+            background: #19B3D3;
+            text-decoration: none;
+            float: right;
+            /* margin-top: -30px; */
+            /* margin-right: 40px; */
+            border-radius: 2px;
+            font-size: 15px;
+            font-weight: 600;
+            color: #fff;
+            transition: 0.5s;
+
+        }
+
+        .logout_btn:hover {
+            background: #0B87A6;
+        }
+    </style>
+
+    <header>
+        <h5 align="center" style="color: #fff;">Student Profile</h5>
+        <div align="right" class="right_area">
+            <a href="/logout" class="logout_btn">Logout</a>
+        </div>
+    </header>
 </head>
 
 <body>
-    <h1>Student Profile</h1>
+    <h1 align="center">Student Profile</h1>
 
 
-    <div id="classes" style="color: blue; background-color: chartreuse;">
+    <!-- <div id="dvTable" style="color: blue; background-color: rgb(127, 128, 126); align-items: center;"> -->
 
-        <h3 id="title"></h3>
-        <h4 id="description"></h4>
-        <h4 id="course"></h4>
+
+    <div class="container">
+        <div class="row">
+
+            <div class="col-md-4 col-xl-6">
+                <div class="card bg-c-green order-card">
+                    <div class="card-block">
+                        <h6 class="m-b-20"><a href="teacher-view-exam" style="text-decoration: none;color:white;">View
+                                Exams</a> </h6>
+                        <h2 class="text-right"><i class="fas fa-eye f-left"></i></h2>
+
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 col-xl-6">
+                <div class="card bg-c-blue order-card">
+                    <div class="card-block">
+                        <h6 class="m-b-20"> <a href="teacher-add-exam" style="text-decoration: none;color:white;">Get
+                                Notes</a> </h6>
+                        <h2 class="text-right"><i class="fas fa-plus f-left"></i></h2>
+
+                    </div>
+                </div>
+            </div>
+
+
+
+
+
+
+        </div>
+    </div>
+    </div>
+
+    <div id="dvTable" align="center">
+
 
 
 
@@ -27,13 +194,72 @@
             return response.json();
 
         }).then(function (obj) {
+
+
+            var courses = new Array();
+
+
             console.log(obj);
 
-            datas = obj;
-            classes_element = ``;
-            title = ``;
-            description = ``;
-            course = ``;
+
+            courses.push(["   Title    ", "  Description    ", "    Take test   "]);
+
+            for (var i = 0; i < obj.length; i++) {
+
+                console.log("bye");
+
+
+                var tit = obj[i].title;
+                var des = obj[i].description;
+                var co = obj[i].course;
+
+                let link_attributes = {
+                    target: '_blank',
+                    class: 'mylink',
+                    rel: 'nofollow noopener'
+                };
+                let result = convert_url(co, link_attributes);
+
+                courses.push([tit, des, result])
+
+                console.log(tit);
+
+            }
+            console.log(courses[1][2]);
+            console.log(courses.length)
+
+            var table = document.createElement("TABLE");
+            table.border = "8";
+
+            //Get the count of columns.
+            var columnCount = courses[0].length;
+
+            //Add the header row.
+            var row = table.insertRow(-1);
+            for (var i = 0; i < columnCount; i++) {
+                var headerCell = document.createElement("TH");
+                headerCell.innerHTML = courses[0][i];
+                row.appendChild(headerCell);
+            }
+
+            //Add the data rows.
+            for (var i = 1; i < courses.length; i++) {
+                row = table.insertRow(-1);
+                for (var j = 0; j < columnCount; j++) {
+                    var cell = row.insertCell(-1);
+                    cell.innerHTML = courses[i][j];
+                }
+            }
+
+            var dvTable = document.getElementById("dvTable");
+            dvTable.innerHTML = "";
+            dvTable.appendChild(table);
+
+            // datas = obj;
+            // classes_element = ``;
+            // title = ``;
+            // description = ``;
+            // course = ``;
 
 
 
@@ -54,7 +280,34 @@
 
             console.log(course);
             window.location.href = "course";
-        } ""
+        }
+
+
+
+        function convert_url(text, link_attributes_obj = {}) {
+            //link_attributes_obj (optional) object {target:'_blank', class:'myLink'}
+
+            //html to text
+            text = text.replace(/</g, '&lt;');
+            text = text.replace(/>/g, '&gt;');
+
+            let attr = [];
+            for (let k in link_attributes_obj) {
+                if (k !== 'href') {
+                    attr.push(k + '="' + link_attributes_obj[k].replaceAll(/"/g, "'") + '"');
+                }
+            }
+
+            //URLs starting with http://, https://, or ftp://
+            let exp = /((?:https?|ftp):\/\/[a-zA-Z0-9][\w+\d+&@\-#\/%?=~_|!:,.;+]*)/gim;
+            text = text.replace(exp, '<a href="$1" ' + attr.join(' ') + '>$1</a>');
+
+            //URLs starting with www.
+            let reg_ww = /(?<!\/)(www\.[a-zA-Z0-9][\w+\d+&@\-#\/%?=~_|!:,.;+]*)/gim;
+            text = text.replace(reg_ww, '<a href="https://$1" ' + attr.join(' ') + '>$1</a>');
+
+            return text;
+        }
 
     </script>
 
