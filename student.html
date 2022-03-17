@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset=UTF-8>
+    <title>Hello World!</title>
+</head>
+
+<body>
+    <h1>Fetch Api</h1>
+    <ul>
+
+    </ul>
+
+    <div id="classes"></div>
+
+
+
+
+
+    <script>
+        fetch('http://localhost:4000/addcourse/response').then(function (response) {
+            return response.json();
+
+        }).then(function (obj) {
+            console.log(obj);
+
+            datas = obj;
+            classes_element = ``
+
+
+            // var ul = document.querySelector("ul");
+
+            // for (var i = 0; i < obj.length; i++) {
+            //     var title = obj[i].title;
+            //     var description = obj[i].description;
+            //     var course = obj[i].course;
+
+            //     var listItem = document.createElement("li");
+
+            //     listItem.textContent = title;
+            //     listItem.textContent = description;
+            //     listItem.textContent = course;
+
+            //     ul.appendChild(listItem);
+
+
+            console.log(obj[0].title);
+            console.log(obj[0].course);
+            console.log(obj.length)
+
+            classes_element += `<button id='${obj[0].title}' ">${obj[0].course}</button><br> `
+
+
+            for (var i = 0; i < obj.length; i++) {
+                console.log(obj[i].title);
+
+                classes_element += `<button id='${element.title}'>${element.course}</button><br> `
+
+
+            }
+
+
+            document.getElementById('classes').innerHTML = classes_element;
+        }).catch(function (error) {
+            console.log("Error...");
+
+
+        })
+
+    </script>
+
+</body>
+
+</html>
