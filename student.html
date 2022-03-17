@@ -43,27 +43,8 @@
 
 
 
-            for (var i = 0; i < obj.length; i++) {
-                classes_element += `<h5 id='title' ">${obj[i].title}</h5><br> `
-                classes_element += `<h5 id='description' ">${obj[i].description}</h5><br> `
-
-                classes_element += `<button id='course' onclick="login()" " >take test</button><br> `
-
-            }
-            document.getElementById('classes').innerHTML = classes_element
-            // obj.forEach(element => {
-            //     console.log(element.titlie);
-
-            //     classes_element += `<button id='${element.titlie}' ">${element.course}</button><br> `
-
-
-            // })
-
-
-
         }).catch(function (error) {
             console.log("Error...");
-
 
         })
 
