@@ -4,7 +4,7 @@ function login() {
 
 }
 
-function create() {
+async function create() {
 
 
 
@@ -20,7 +20,7 @@ function create() {
 
         console.log(document.getElementById('firstName').value);
 
-        fetch("http://localhost:4000/student", {
+        await fetch("http://localhost:4000/student", {
             method: "POST",
             body: JSON.stringify({
                 firstName: document.getElementById('firstName').value,

@@ -4,14 +4,24 @@
 <head>
 
     <meta charset=UTF-8>
+    <script src="js/register.js"></script>
+
     <title>Hello World!</title>
 </head>
 
 <body>
-    <h1>Fetch Api</h1>
+    <h1>Student Profile</h1>
 
 
-    <div id="classes"></div>
+    <div id="classes" style="color: blue; background-color: chartreuse;">
+
+        <h3 id="title"></h3>
+        <h4 id="description"></h4>
+        <h4 id="course"></h4>
+
+
+
+    </div>
     <script>
         fetch('http://localhost:4000/addcourse/response').then(function (response) {
             return response.json();
@@ -20,16 +30,27 @@
             console.log(obj);
 
             datas = obj;
-            classes_element = ``
+            classes_element = ``;
+            title = ``;
+            description = ``;
+            course = ``;
 
 
 
             console.log(obj[0].title);
             console.log(obj[0].course);
 
-            classes_element += `<button id='${obj[0].title}' ">${obj[0].course}</button><br> `
-            classes_element += `<button id='${obj[0].title}' ">${obj[0].title}</button><br> `
 
+
+
+            for (var i = 0; i < obj.length; i++) {
+                classes_element += `<h5 id='title' ">${obj[i].title}</h5><br> `
+                classes_element += `<h5 id='description' ">${obj[i].description}</h5><br> `
+
+                classes_element += `<button id='course' onclick="login()" " >take test</button><br> `
+
+            }
+            document.getElementById('classes').innerHTML = classes_element
             // obj.forEach(element => {
             //     console.log(element.titlie);
 
@@ -39,12 +60,20 @@
             // })
 
 
-            document.getElementById('classes').innerHTML = classes_element
+
         }).catch(function (error) {
             console.log("Error...");
 
 
         })
+
+
+
+        function taketest(course) {
+
+            console.log(course);
+            window.location.href = "course";
+        }
 
     </script>
 
