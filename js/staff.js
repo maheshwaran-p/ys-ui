@@ -5,16 +5,17 @@ async function addcourse() {
 
 
 
+    console.log(document.getElementById('title').value)
+
+
     var title = document.getElementById('title').value;
     var description = document.getElementById('description').value;
     var link = document.getElementById('link').value;
 
-
+    console.log(link);
     if (title != '' && description != '' && link != '') {
 
         console.log('hii');
-
-        console.log(document.getElementById('firstName').value);
 
         await fetch("http://localhost:4000/addcourse", {
             method: "POST",
@@ -31,7 +32,7 @@ async function addcourse() {
         })
             .then(response => response.json())
             .then(json => console.log(json));
-        console.log(firstName);
+
 
     }
 
