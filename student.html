@@ -30,19 +30,10 @@
             classes_element += `<button id='${obj[0].title}' ">${obj[0].course}</button><br> `
             classes_element += `<button id='${obj[0].title}' ">${obj[0].title}</button><br> `
 
-            // obj.forEach(element => {
-            //     console.log(element.titlie);
-
-            //     classes_element += `<button id='${element.titlie}' ">${element.course}</button><br> `
-
-
-            // })
-
 
             document.getElementById('classes').innerHTML = classes_element
         }).catch(function (error) {
             console.log("Error...");
-
 
         })
 
