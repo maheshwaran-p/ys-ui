@@ -41,6 +41,11 @@ async function addcourse() {
 
 
 
+    if (title != '' && description != '' && link != '' && stafflink != '') {
+        window.location.href = "./staff-base.html";
+
+    }
+
 
 
 
