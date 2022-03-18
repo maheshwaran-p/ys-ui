@@ -4,7 +4,7 @@ function login() {
 
 }
 
-async function create3() {
+async function createstudent() {
 
 
 
@@ -42,6 +42,42 @@ async function create3() {
 
 }
 
+
+
+
+async function createstaff() {
+
+    console.log('hii');
+
+    console.log(document.getElementById('firstName').value);
+
+    await fetch("http://localhost:4000/staff", {
+        method: "POST",
+        body: JSON.stringify({
+            firstName: document.getElementById('firstName').value,
+            lastName: document.getElementById('lastName').value,
+            username: document.getElementById('username').value,
+            email: document.getElementById('email').value,
+            password: document.getElementById('password').value
+        }),
+
+        headers: {
+            "Content-type": "application/json; charset=UTF-8"
+        }
+    })
+        .then(response => response.json())
+        .then(json => console.log(json));
+    console.log(firstName);
+
+
+
+    window.location.href = "./staff-base.html";
+
+
+
+
+
+}
 
 // async function create2() {
 //     url = 'http://localhost:4000/student';

@@ -93,7 +93,7 @@
 
         th,
         td {
-            padding: 35px;
+            padding: 65px;
         }
 
         header {
@@ -231,32 +231,40 @@
 
                 courses.push([tit, des, result])
 
-                console.log(tit);
+
+
+
 
             }
-            console.log(courses[1][2]);
-            console.log(courses.length)
+
+            arr1 = [];
+
+            arr1.push(courses[0]);
+
+            for (let i = courses.length - 1; i > 0; i--) {
+                arr1.push(courses[i]);
+            }
 
             var table = document.createElement("TABLE");
             table.border = "8";
 
             //Get the count of columns.
-            var columnCount = courses[0].length;
+            var columnCount = arr1[0].length;
 
             //Add the header row.
             var row = table.insertRow(-1);
             for (var i = 0; i < columnCount; i++) {
                 var headerCell = document.createElement("TH");
-                headerCell.innerHTML = courses[0][i];
+                headerCell.innerHTML = arr1[0][i];
                 row.appendChild(headerCell);
             }
 
             //Add the data rows.
-            for (var i = 1; i < courses.length; i++) {
+            for (var i = 1; i < arr1.length; i++) {
                 row = table.insertRow(-1);
                 for (var j = 0; j < columnCount; j++) {
                     var cell = row.insertCell(-1);
-                    cell.innerHTML = courses[i][j];
+                    cell.innerHTML = arr1[i][j];
                 }
             }
 
