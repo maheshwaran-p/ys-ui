@@ -4,6 +4,13 @@
     <title>Add New Course</title>
     <link rel="stylesheet" href="css/login.css">
     <script src="js/staff.js"></script>
+
+    <header>
+        <h4 align="center" style="color: #fff;"> Add New Course</h4>
+        <div align="right" class="right_area">
+            <a onclick="form()" class="logout_btn">Add Quetions</a>
+        </div>
+    </header>
 </head>
 
 <body>
@@ -14,7 +21,7 @@
 
             </div>
 
-            <h2 style="padding-bottom: 30px;">Add New Course</h2>
+            <!-- <h2 style="padding-bottom: 30px; padding-top: 40px;" align="center">Add New Course</h2> -->
             <div class="colm-form">
 
                 <div class="form-container">
@@ -30,6 +37,39 @@
             </div>
         </div>
     </main>
+
+    <style>
+        .left_area span {
+            color: #19B3D3;
+        }
+
+        .logout_btn {
+            padding: 5px;
+            background: #19B3D3;
+            text-decoration: none;
+            float: right;
+            /* margin-top: -30px; */
+            /* margin-right: 40px; */
+            border-radius: 2px;
+            font-size: 15px;
+            font-weight: 600;
+            color: #fff;
+            transition: 0.5s;
+
+        }
+
+        .logout_btn:hover {
+            background: #0B87A6;
+        }
+
+        header {
+            position: fixed;
+            background: #22242A;
+            padding: 16px;
+            width: 100%;
+            z-index: 1;
+        }
+    </style>
 </body>
 
 </html>

@@ -227,13 +227,15 @@
                 };
                 let result = convert_url(co, link_attributes);
 
+
+
+
                 courses.push([tit, des, result])
 
-                console.log(tit);
+
 
             }
-            console.log(courses[1][2]);
-            console.log(courses.length)
+
 
             var table = document.createElement("TABLE");
             table.border = "8";
@@ -307,14 +309,17 @@
 
             //URLs starting with http://, https://, or ftp://
             let exp = /((?:https?|ftp):\/\/[a-zA-Z0-9][\w+\d+&@\-#\/%?=~_|!:,.;+]*)/gim;
-            text = text.replace(exp, '<a href="$1" ' + attr.join(' ') + '>$1</a>');
+            text = text.replace(exp, '<a href="$1" ' + attr.join(' ') + '>Take Test</a>');
 
             //URLs starting with www.
             let reg_ww = /(?<!\/)(www\.[a-zA-Z0-9][\w+\d+&@\-#\/%?=~_|!:,.;+]*)/gim;
-            text = text.replace(reg_ww, '<a href="https://$1" ' + attr.join(' ') + '>$1</a>');
+            text = text.replace(reg_ww, '<a href="https://$1" ' + attr.join(' ') + '>Take Test</a>');
 
             return text;
         }
+
+
+
 
     </script>
 

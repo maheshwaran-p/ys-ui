@@ -51,3 +51,13 @@ async function addcourse() {
 
 
 }
+
+
+
+
+function form() {
+
+    window.location.href = "https://docs.google.com/forms/u/0/";
+
+}
+

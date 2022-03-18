@@ -315,11 +315,11 @@
 
             //URLs starting with http://, https://, or ftp://
             let exp = /((?:https?|ftp):\/\/[a-zA-Z0-9][\w+\d+&@\-#\/%?=~_|!:,.;+]*)/gim;
-            text = text.replace(exp, '<a href="$1" ' + attr.join(' ') + '>$1</a>');
+            text = text.replace(exp, '<a href="$1" ' + attr.join(' ') + '>View Response</a>');
 
             //URLs starting with www.
             let reg_ww = /(?<!\/)(www\.[a-zA-Z0-9][\w+\d+&@\-#\/%?=~_|!:,.;+]*)/gim;
-            text = text.replace(reg_ww, '<a href="https://$1" ' + attr.join(' ') + '>$1</a>');
+            text = text.replace(reg_ww, '<a href="https://$1" ' + attr.join(' ') + '>View Response</a>');
 
             return text;
         }

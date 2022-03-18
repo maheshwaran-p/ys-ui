@@ -4,6 +4,12 @@
     <title>Add New Note</title>
     <link rel="stylesheet" href="css/login.css">
     <script src="js/staff-notes.js"></script>
+    <header>
+        <h4 align="center" style="color: #fff;"> Add New Note</h4>
+        <div align="right" class="right_area">
+            <a onclick="" class="logout_btn">Add Quetions</a>
+        </div>
+    </header>
 </head>
 
 <body>
@@ -14,7 +20,7 @@
 
             </div>
 
-            <h2 style="padding-bottom: 30px;">Add New Note</h2>
+            <!-- <h2 style="padding-bottom: 30px; padding-top: 40px;" align="center">Add New Note</h2> -->
             <div class="colm-form">
 
                 <div class="form-container">
@@ -30,6 +36,39 @@
             </div>
         </div>
     </main>
+
+    <style>
+        .left_area span {
+            color: #22242A;
+        }
+
+        .logout_btn {
+            padding: 5px;
+            background: #22242A;
+            text-decoration: none;
+            float: right;
+            /* margin-top: -30px; */
+            /* margin-right: 40px; */
+            border-radius: 2px;
+            font-size: 15px;
+            font-weight: 600;
+            color: #22242A;
+            transition: 0.5s;
+
+        }
+
+        .logout_btn:hover {
+            background: #22242A;
+        }
+
+        header {
+            position: fixed;
+            background: #22242A;
+            padding: 16px;
+            width: 100%;
+            z-index: 1;
+        }
+    </style>
 </body>
 
 </html>
