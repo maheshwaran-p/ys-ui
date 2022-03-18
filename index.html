@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title></title>
+  <link rel="stylesheet" href="css/login.css" />
+  <script src="js/login.js"></script>
+
+</head>
+
+<body>
+  <main>
+    <div class="colm-form">
+      <div class="form-container">
+        <div class="tag">
+          Login
+        </div>
+        <input id="username" class="inp" value="" type="text" placeholder="username" />
+        <input id="password" class="inp" value="" type="password" placeholder="Password" />
+        <button onclick="login()" class="btn-login">Login</button>
+        <button class="btn-new" onclick="register()">
+          Create new Account
+        </button>
+
+        <div id="snackbar">Invalid Username or Password</div>
+        <div id="snackbar2">All fields are required</div>
+      </div>
+    </div>
+  </main>
+
+
+
+  <script>
+
+
+    async function login() {
+
+      console.log('hii');
+
+
+
+      var user = document.getElementById('username').value;
+      var password = document.getElementById('password').value;
+
+      if (user != '' && password != '') {
+
+        await fetch("http://localhost:4000/login", {
+          method: "POST",
+          body: JSON.stringify({
+
+            username: document.getElementById('username').value,
+
+            password: document.getElementById('password').value
+          }),
+
+          headers: {
+            "Content-type": "application/json; charset=UTF-8"
+          }
+        })
+          .then(response => response.json())
+          .then(json => {
+            console.log(json.accessToken)
+
+            if (json.accessToken == undefined) {
+              console.log("invalid Username or Password");
+
+              var x = document.getElementById("snackbar");
+              x.className = "show";
+              setTimeout(function () { x.className = x.className.replace("show", ""); }, 3000);
+            }
+
+            if (json.isStaff && json.accessToken != undefined) {
+
+              window.location.href = "./staff-base.html";
+
+            }
+
+            if (!json.isStaff && json.accessToken != undefined) {
+
+              window.location.href = "./student.html";
+
+            }
+
+          });
+
+      }
+
+      else {
+        var x = document.getElementById("snackbar2");
+        x.className = "show";
+        setTimeout(function () { x.className = x.className.replace("show", ""); }, 3000);
+      }
+
+
+
+
+
+
+    }
+
+  </script>
+</body>
+
+</html>
