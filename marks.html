@@ -5,8 +5,9 @@
 
     <meta charset=UTF-8>
     <script src="js/register.js"></script>
+    <script src="js/staff.js"></script>
 
-    <title>Add New Note</title>
+    <title>Marks</title>
 
 
     <meta charset="utf-8">
@@ -136,15 +137,15 @@
     </style>
 
     <header>
-        <h5 align="center" style="color: #fff;">Staff Profile</h5>
+        <h5 align="center" style="color: #fff;">Marks</h5>
         <div align="right" class="right_area">
-            <a onclick="newnotes()" class="logout_btn">Add New Note</a>
+            <a onclick="newcours()" class="logout_bt">Add New Course</a>
         </div>
     </header>
 </head>
 
 <body>
-    <h1 align="center">Add New Note</h1>
+    <h1 align="center">Validate</h1>
 
 
     <!-- <div id="dvTable" style="color: blue; background-color: rgb(127, 128, 126); align-items: center;"> -->
@@ -164,7 +165,7 @@
                     </div>
                 </div>
             </div>
-            <div class="col-md-4 col-xl-6">
+            <div class="col-md-4 col-xl-6" onclick="note()">
                 <div class="card bg-c-blue order-card">
                     <div class="card-block">
                         <h6 class="m-b-20"> <a style="text-decoration: none;color:white;">
@@ -174,9 +175,15 @@
 
                     </div>
                 </div>
+
             </div>
 
-            <div class="col-md-4 col-xl-6" onclick="validation()">
+
+
+
+
+
+            <div class="col-md-4 col-xl-6" onclick="">
                 <div class="card bg-c-blue order-card">
                     <div class="card-block">
                         <h6 class="m-b-20"> <a style="text-decoration: none;color:white;">
@@ -189,8 +196,6 @@
             </div>
 
 
-
-
         </div>
     </div>
     </div>
@@ -200,12 +205,31 @@
 
 
 
+
     </div>
+
+
+    <input type="button" id="bt" value="Show Table Data" onclick="mark1()" />
+
+
     <script>
 
-        function newnotes() {
 
-            window.location.href = "./addnewnotes.html";
+
+
+
+        function newcourse() {
+
+
+            window.location.href = "./addnewcourse.html";
+
+        }
+
+
+
+        function note() {
+
+            window.location.href = "./staff-note.html";
 
         }
 
@@ -215,13 +239,37 @@
 
         }
 
-        function validation() {
+        arr1 = [];
 
-            window.location.href = "./validation.html";
+        marks = [];
 
+        function mark1() {
+            for (var k = 1; k < arr1.length; k++) {
+
+
+                mark = document.getElementById("mark").value;
+
+                // console.log(arr1[1][k])
+
+                //   mark = arr1[1][k];
+
+                marks.push(mark);
+
+
+
+
+            }
+
+            console.log("lenght:" + marks.length);
+
+
+            console.log(marks[0]);
+            console.log(marks[1]);
+            console.log(marks[2]);
+            console.log(marks[3]);
         }
 
-        fetch('http://localhost:4000/addnote/response').then(function (response) {
+        fetch('http://localhost:4000/student/get').then(function (response) {
             return response.json();
 
         }).then(function (obj) {
@@ -233,34 +281,46 @@
             console.log(obj);
 
 
-            courses.push(["   Title    ", "  Description    ", " Notes "]);
+            courses.push(["Student    ", " Marks",]);
 
             for (var i = 0; i < obj.length; i++) {
 
                 console.log("bye");
 
-                console.log(obj[i].title)
-                var tit = obj[i].title;
-                var des = obj[i].description;
-                var li = obj[i].link;
 
+                var user = obj[i].username;
+
+                let id1 = obj[i].id;
+                console.log(obj[i].username);
+                // console.log(id1);
 
                 let link_attributes = {
                     target: '_blank',
                     class: 'mylink',
                     rel: 'nofollow noopener'
                 };
-                let result = convert_url(li, link_attributes);
 
-                console.log(result);
-                courses.push([tit, des, result])
 
-                console.log(tit);
+
+                //  let result = convert_url(co, link_attributes);
+
+
+                // let result2 = convert_url(staff, link_attributes);
+
+                //   let result3 = convert_url3(id1, "https://delete/course/", link_attributes);
+
+                // console.log(result3);
+
+
+                courses.push([user])
+
+
 
             }
 
 
-            arr1 = [];
+
+
 
             arr1.push(courses[0]);
 
@@ -280,6 +340,7 @@
             for (var i = 0; i < columnCount; i++) {
                 var headerCell = document.createElement("TH");
                 headerCell.innerHTML = arr1[0][i];
+
                 row.appendChild(headerCell);
             }
 
@@ -289,31 +350,39 @@
                 for (var j = 0; j < columnCount; j++) {
                     var cell = row.insertCell(-1);
                     cell.innerHTML = arr1[i][j];
+                    if (j != 0) {
+                        cell.innerHTML = `<div><input  id="mark" value="0" type="text"></div>`
+
+                        // console.log(obj[i].id);
+
+                        // mark = arr1[i][j];
+
+                        // marks.push(mark);
+                    }
+                    // cell.innerHTML = cell.innerHTML;
+                    // mark = document.getElementById("marks").value;
+
+                    // marks.push(mark);
+
+
+
                 }
             }
+
+
+            console.log("mark......" + marks[0])
+
+
 
             var dvTable = document.getElementById("dvTable");
             dvTable.innerHTML = "";
             dvTable.appendChild(table);
-
-            // datas = obj;
-            // classes_element = ``;
-            // title = ``;
-            // description = ``;
-            // course = ``;
-
-
-
-            console.log(obj[0].title);
-            console.log(obj[0].course);
-
-
-
-
         }).catch(function (error) {
             console.log("Error...");
 
         })
+
+
 
 
 
@@ -323,6 +392,35 @@
             window.location.href = "course";
         }
 
+
+
+        function convert_url3(id1, text, link_attributes_obj = {}) {
+
+
+            console.log("id::::" + id1);
+
+            text = text.replace(/</g, '&lt;');
+            text = text.replace(/>/g, '&gt;');
+
+            let attr = [];
+            for (let k in link_attributes_obj) {
+                if (k !== 'href') {
+                    attr.push(k + '="' + link_attributes_obj[k].replaceAll(/"/g, "'") + '"');
+                }
+            }
+
+            //URLs starting with http://, https://, or ftp://
+            let exp = /((?:https?|ftp):\/\/[a-zA-Z0-9][\w+\d+&@\-#\/%?=~_|!:,.;+]*)/gim;
+            text = text.replace(exp, '<a onclick="javascript: getCourse(\'' + id1 + '\')  ">validate</a>');
+
+            //URLs starting with www.
+            let reg_ww = /(?<!\/)(www\.[a-zA-Z0-9][\w+\d+&@\-#\/%?=~_|!:,.;+]*)/gim;
+            text = text.replace(reg_ww, '<a onclick="javascript: getCourse(\'' + id1 + '\')">validate</a>');
+            // deleteCourse(id1);
+
+
+            return text;
+        }
 
 
         function convert_url(text, link_attributes_obj = {}) {
@@ -341,11 +439,11 @@
 
             //URLs starting with http://, https://, or ftp://
             let exp = /((?:https?|ftp):\/\/[a-zA-Z0-9][\w+\d+&@\-#\/%?=~_|!:,.;+]*)/gim;
-            text = text.replace(exp, '<a href="$1" ' + attr.join(' ') + '>View Notes</a>');
+            text = text.replace(exp, '<a href="$1" ' + attr.join(' ') + '>View Response</a>');
 
             //URLs starting with www.
             let reg_ww = /(?<!\/)(www\.[a-zA-Z0-9][\w+\d+&@\-#\/%?=~_|!:,.;+]*)/gim;
-            text = text.replace(reg_ww, '<a href="https://$1" ' + attr.join(' ') + '>View Notes</a>');
+            text = text.replace(reg_ww, '<a href="https://$1" ' + attr.join(' ') + '>View Response</a>');
 
             return text;
         }

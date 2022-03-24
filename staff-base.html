@@ -5,6 +5,7 @@
 
     <meta charset=UTF-8>
     <script src="js/register.js"></script>
+    <script src="js/staff.js"></script>
 
     <title>Staff Profile</title>
 
@@ -174,11 +175,25 @@
 
                     </div>
                 </div>
+
             </div>
 
 
 
 
+
+
+            <div class="col-md-4 col-xl-6" onclick="validation()">
+                <div class="card bg-c-blue order-card">
+                    <div class="card-block">
+                        <h6 class="m-b-20"> <a style="text-decoration: none;color:white;">
+
+                                Validate</a> </h6>
+                        <h2 class="text-right"><i class="fas fa-plus f-left"></i></h2>
+
+                    </div>
+                </div>
+            </div>
 
 
         </div>
@@ -195,12 +210,25 @@
 
 
         function newcourse() {
+
+
             window.location.href = "./addnewcourse.html";
 
         }
+
+
+
         function note() {
 
             window.location.href = "./staff-note.html";
+
+        }
+
+
+
+        function validation() {
+
+            window.location.href = "./validation.html";
 
         }
         fetch('http://localhost:4000/addcourse/response').then(function (response) {
@@ -215,7 +243,7 @@
             console.log(obj);
 
 
-            courses.push(["   Title    ", "  Description    ", " Response"]);
+            courses.push(["   Title    ", "  Description    ", " Response", "Delete"]);
 
             for (var i = 0; i < obj.length; i++) {
 
@@ -226,16 +254,27 @@
                 var des = obj[i].description;
                 var co = obj[i].course;
                 var staff = obj[i].stafflink;
+                let id1 = obj[i].id;
+                console.log(obj[i].id);
+                console.log(id1);
 
                 let link_attributes = {
                     target: '_blank',
                     class: 'mylink',
                     rel: 'nofollow noopener'
                 };
+
+
+
                 let result = convert_url(co, link_attributes);
+
+
                 let result2 = convert_url(staff, link_attributes);
 
-                courses.push([tit, des, result2])
+                let result3 = convert_url3(id1, "https://delete/course/", link_attributes);
+
+
+                courses.push([tit, des, result2, result3])
 
                 console.log(tit);
 
@@ -305,6 +344,37 @@
             window.location.href = "course";
         }
 
+
+
+        function convert_url3(id1, text, link_attributes_obj = {}) {
+
+
+
+            //link_attributes_obj (optional) object {target:'_blank', class:'myLink'}
+
+            //html to text
+            text = text.replace(/</g, '&lt;');
+            text = text.replace(/>/g, '&gt;');
+
+            let attr = [];
+            for (let k in link_attributes_obj) {
+                if (k !== 'href') {
+                    attr.push(k + '="' + link_attributes_obj[k].replaceAll(/"/g, "'") + '"');
+                }
+            }
+
+            //URLs starting with http://, https://, or ftp://
+            let exp = /((?:https?|ftp):\/\/[a-zA-Z0-9][\w+\d+&@\-#\/%?=~_|!:,.;+]*)/gim;
+            text = text.replace(exp, '<a onclick="javascript: deleteCourse(\'' + id1 + '\')">delete</a>');
+
+            //URLs starting with www.
+            let reg_ww = /(?<!\/)(www\.[a-zA-Z0-9][\w+\d+&@\-#\/%?=~_|!:,.;+]*)/gim;
+            text = text.replace(reg_ww, '<a onclick="javascript: deleteCourse(\'' + id1 + '\')">delete</a>');
+            // deleteCourse(id1);
+
+
+            return text;
+        }
 
 
         function convert_url(text, link_attributes_obj = {}) {
