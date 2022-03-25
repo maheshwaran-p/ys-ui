@@ -10,9 +10,21 @@ async function getCourse(id) {
         window.location.href = "./marks.html";
         id = parseInt(id)
 
-        console.log(id + 50)
+        console.log(id + 50);
 
 
+        if (typeof (Storage) !== "undefined") {
+            // Store
+            localStorage.setItem("CourseId", id);
+            // Retrieve
+            // document.getElementById("result").innerHTML = localStorage.getItem("lastname");
+        } else {
+            // document.getElementById("result").innerHTML = "Sorry, your browser does not support Web Storage...";
+        }
+
+
+
+        console.log("id from local storage :" + localStorage.getItem("CourseId"));
         await fetch("http://localhost:4000/addcourse/validate/" + id, {
             method: "GET",
             // body: JSON.stringify({
