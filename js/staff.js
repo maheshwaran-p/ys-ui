@@ -7,15 +7,22 @@ async function getCourse(id) {
 
     if (id !== "") {
 
-        window.location.href = "./marks.html";
-        id = parseInt(id)
+
+        id = parseInt(id);
+        cid = id;
+
+        window.location.href = "./marks.html?cid=" + id;
 
         console.log(id + 50);
 
 
+
+
+
         if (typeof (Storage) !== "undefined") {
+            localStorage.setItem('CourseId', id);
             // Store
-            localStorage.setItem("CourseId", id);
+            // localStorage.setItem("CourseId", id);
             // Retrieve
             // document.getElementById("result").innerHTML = localStorage.getItem("lastname");
         } else {
@@ -23,8 +30,13 @@ async function getCourse(id) {
         }
 
 
+        window.localStorage.setItem('CourseId', id);
 
         console.log("id from local storage :" + localStorage.getItem("CourseId"));
+        console.log("id from window local storage :" + window.localStorage.getItem('CourseId'));
+
+
+
         await fetch("http://localhost:4000/addcourse/validate/" + id, {
             method: "GET",
             // body: JSON.stringify({
