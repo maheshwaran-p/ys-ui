@@ -29,12 +29,34 @@ async function createstudent() {
         }
     })
         .then(response => response.json())
-        .then(json => console.log(json));
-    console.log(firstName);
+        .then(json => {
+            console.log(json)
+
+            console.log(json.firstName);
+            console.log(json.user);
+            if (json.user != null) {
+                window.location.href = "./student.html";
+
+            }
+            else {
+
+                var x = document.getElementById("alreadytaken");
+                x.className = "show";
+                setTimeout(function () { x.className = x.className.replace("show", ""); }, 3000);
+
+            }
+
+
+        });
 
 
 
-    window.location.href = "./student.html";
+
+
+
+
+
+
 
 
 
@@ -66,12 +88,29 @@ async function createstaff() {
         }
     })
         .then(response => response.json())
-        .then(json => console.log(json));
+        .then(json => {
+            console.log(json)
+            console.log(json.firstName);
+            console.log(json.user);
+            if (json.user != null) {
+                window.location.href = "./staff-base.html";
+
+            }
+            else {
+
+                var x = document.getElementById("alreadytaken");
+                x.className = "show";
+                setTimeout(function () { x.className = x.className.replace("show", ""); }, 3000);
+
+            }
+
+
+        });
     console.log(firstName);
 
 
 
-    window.location.href = "./staff-base.html";
+
 
 
 

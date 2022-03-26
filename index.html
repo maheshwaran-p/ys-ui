@@ -62,7 +62,7 @@
         })
           .then(response => response.json())
           .then(json => {
-            console.log(json.accessToken)
+            //  console.log(json.accessToken)
 
             if (json.accessToken == undefined) {
               console.log("invalid Username or Password");
@@ -75,12 +75,14 @@
             if (json.isStaff && json.accessToken != undefined) {
 
               window.location.href = "./staff-base.html";
-
             }
 
             if (!json.isStaff && json.accessToken != undefined) {
 
               window.location.href = "./student.html";
+
+              getStudentId(json.username);
+
 
             }
 
@@ -94,6 +96,37 @@
         setTimeout(function () { x.className = x.className.replace("show", ""); }, 3000);
       }
 
+
+
+
+
+
+    }
+
+
+
+    async function getStudentId(name) {
+
+
+      console.log(name)
+
+
+
+      await fetch("http://localhost:4000/student/get/name/" + name, {
+        method: "GET",
+        // body: JSON.stringify({
+        //     title: document.getElementById('title').value,
+        //     description: document.getElementById('description').value,
+        //     course: document.getElementById('link').value,
+        //     stafflink: document.getElementById('stafflink').value,
+        // }),
+
+        headers: {
+          "Content-type": "application/json; charset=UTF-8"
+        }
+      })
+        .then(response => response.json())
+        .then(json => console.log(json));
 
 
 
