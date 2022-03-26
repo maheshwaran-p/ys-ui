@@ -175,6 +175,17 @@
             </div>
 
 
+            <div onclick="studentprogress()" class="col-md-4 col-xl-6">
+                <div class="card bg-c-blue order-card">
+                    <div class="card-block">
+                        <h6 class="m-b-20"> <a style="text-decoration: none;color:white;">Progress</a> </h6>
+                        <h2 class="text-right"><i class="fas fa-plus f-left"></i></h2>
+
+                    </div>
+                </div>
+            </div>
+
+
 
 
 
@@ -191,119 +202,169 @@
     </div>
     <script>
 
+        window.onload = tabledata();
+
+        async function studentprogress() {
 
 
 
-        function studentnote() {
 
-            window.location.href = "./student-note.html";
+            let urlString =
+                window.location.href;
+            let paramString = urlString.split('?')[1];
+            let queryString = new URLSearchParams(paramString);
+            let pair = []
+            for (pair of queryString.entries()) {
+                console.log("Key is:" + pair[0]);
+                console.log("Value is:" + pair[1]);
+            }
+
+            // console.log("username from url: " + pair[1]);
+
+            await fetch("http://localhost:4000/student/get/name/" + pair[1], {
+                method: "GET",
+            })
+                .then(response => response.json())
+                .then(json => {
+                    console.log(json)
+
+                    console.log(json.id);
+
+
+
+                    window.location.href = "./graph.html?id=" + json.id;
+                });
+
+
 
         }
-        await fetch('http://localhost:4000/addcourse/response').then(function (response) {
-            return response.json();
-
-        }).then(function (obj) {
 
 
-            var courses = new Array();
+        async function studentnote() {
 
-
-            console.log(obj);
-
-
-            courses.push(["   Title    ", "  Description    ", "    Take test   "]);
-
-
-
-            for (var i = 0; i < obj.length; i++) {
-
-                console.log("bye");
-
-
-                var tit = obj[i].title;
-                var des = obj[i].description;
-                var co = obj[i].course;
-
-                let link_attributes = {
-                    target: '_blank',
-                    class: 'mylink',
-                    rel: 'nofollow noopener'
-                };
-                let result = convert_url(co, link_attributes);
-
-
-                id1 = [];
-
-                //console.log(obj[i].id);
-
-                id1.push(obj[i].id)
-
-
-
-                courses.push([tit, des, result])
-
+            let urlString =
+                window.location.href;
+            let paramString = urlString.split('?')[1];
+            let queryString = new URLSearchParams(paramString);
+            let pair = []
+            for (pair of queryString.entries()) {
+                console.log("Key is:" + pair[0]);
+                console.log("Value is:" + pair[1]);
             }
 
+            window.location.href = "./student-note.html?username=" + pair[1];
 
-            // courses.reverse();
-            arr1 = [];
-            id2 = [];
-
-            arr1.push(courses[0]);
-            id2.push(0);
-
-            for (let i = courses.length - 1; i > 0; i--) {
-                arr1.push(courses[i]);
-                id2.push(id1[i])
-            }
+        }
 
 
-            var table = document.createElement("TABLE");
-            table.border = "8";
+        async function tabledata() {
 
-            //Get the count of columns.
-            var columnCount = arr1[0].length;
+            await fetch('http://localhost:4000/addcourse/response').then(function (response) {
+                return response.json();
 
-            //Add the header row.
-            var row = table.insertRow(-1);
-            for (var i = 0; i < columnCount; i++) {
-                var headerCell = document.createElement("TH");
-                headerCell.innerHTML = arr1[0][i];
-                row.appendChild(headerCell);
-            }
+            }).then(function (obj) {
 
-            //Add the data rows.
-            for (var i = 1; i < arr1.length; i++) {
-                row = table.insertRow(-1);
-                for (var j = 0; j < columnCount; j++) {
-                    var cell = row.insertCell(-1);
-                    cell.innerHTML = arr1[i][j];
+
+                var courses = new Array();
+
+
+                console.log(obj);
+
+
+                courses.push(["   Title    ", "  Description    ", "    Take test   "]);
+
+
+
+                for (var i = 0; i < obj.length; i++) {
+
+                    console.log("bye");
+
+
+                    var tit = obj[i].title;
+                    var des = obj[i].description;
+                    var co = obj[i].course;
+
+                    let link_attributes = {
+                        target: '_blank',
+                        class: 'mylink',
+                        rel: 'nofollow noopener'
+                    };
+                    let result = convert_url(co, link_attributes);
+
+
+                    id1 = [];
+
+                    //console.log(obj[i].id);
+
+                    id1.push(obj[i].id)
+
+
+
+                    courses.push([tit, des, result])
+
                 }
-            }
-
-            var dvTable = document.getElementById("dvTable");
-            dvTable.innerHTML = "";
-            dvTable.appendChild(table);
-
-            // datas = obj;
-            // classes_element = ``;
-            // title = ``;
-            // description = ``;
-            // course = ``;
 
 
+                // courses.reverse();
+                arr1 = [];
+                id2 = [];
 
-            // console.log(obj[0].title);
-            // console.log(obj[0].course);
+                arr1.push(courses[0]);
+                id2.push(0);
+
+                for (let i = courses.length - 1; i > 0; i--) {
+                    arr1.push(courses[i]);
+                    id2.push(id1[i])
+                }
+
+
+                var table = document.createElement("TABLE");
+                table.border = "8";
+
+                //Get the count of columns.
+                var columnCount = arr1[0].length;
+
+                //Add the header row.
+                var row = table.insertRow(-1);
+                for (var i = 0; i < columnCount; i++) {
+                    var headerCell = document.createElement("TH");
+                    headerCell.innerHTML = arr1[0][i];
+                    row.appendChild(headerCell);
+                }
+
+                //Add the data rows.
+                for (var i = 1; i < arr1.length; i++) {
+                    row = table.insertRow(-1);
+                    for (var j = 0; j < columnCount; j++) {
+                        var cell = row.insertCell(-1);
+                        cell.innerHTML = arr1[i][j];
+                    }
+                }
+
+                var dvTable = document.getElementById("dvTable");
+                dvTable.innerHTML = "";
+                dvTable.appendChild(table);
+
+                // datas = obj;
+                // classes_element = ``;
+                // title = ``;
+                // description = ``;
+                // course = ``;
+
+
+
+                // console.log(obj[0].title);
+                // console.log(obj[0].course);
 
 
 
 
-        }).catch(function (error) {
-            console.log("Error...");
+            }).catch(function (error) {
+                console.log("Error...");
 
-        })
+            })
 
+        }
 
 
         function taketest(course) {

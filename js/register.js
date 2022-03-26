@@ -1,14 +1,9 @@
 function login() {
 
     window.location.href = "./index.html";
-
 }
 
 async function createstudent() {
-
-
-
-
 
     console.log('hii');
 
@@ -45,25 +40,8 @@ async function createstudent() {
                 setTimeout(function () { x.className = x.className.replace("show", ""); }, 3000);
 
             }
-
-
         });
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 }
-
 
 
 
@@ -107,14 +85,6 @@ async function createstaff() {
 
         });
     console.log(firstName);
-
-
-
-
-
-
-
-
 
 }
 

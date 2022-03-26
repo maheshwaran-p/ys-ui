@@ -192,104 +192,107 @@
     </div>
     <script>
 
+
+
+        window.onload = tabledata();
         function exams() {
 
-            window.location.href = "./student.html";
+
+            let urlString =
+                window.location.href;
+            let paramString = urlString.split('?')[1];
+            let queryString = new URLSearchParams(paramString);
+            let pair = []
+            for (pair of queryString.entries()) {
+                console.log("Key is:" + pair[0]);
+                console.log("Value is:" + pair[1]);
+            }
+
+
+            window.location.href = "./student.html?username=" + pair[1];
 
         }
 
+        async function tabledata() {
+            await fetch('http://localhost:4000/addnote/response').then(function (response) {
+                return response.json();
 
-        fetch('http://localhost:4000/addnote/response').then(function (response) {
-            return response.json();
-
-        }).then(function (obj) {
-
-
-            var courses = new Array();
+            }).then(function (obj) {
 
 
-            console.log(obj);
+                var courses = new Array();
 
 
-            courses.push(["   Title    ", "  Description    ", "   Notes  "]);
-
-            for (var i = 0; i < obj.length; i++) {
-
-                console.log("bye");
+                console.log(obj);
 
 
-                var tit = obj[i].title;
-                var des = obj[i].description;
-                var li = obj[i].link;
+                courses.push(["   Title    ", "  Description    ", "   Notes  "]);
 
-                let link_attributes = {
-                    target: '_blank',
-                    class: 'mylink',
-                    rel: 'nofollow noopener'
-                };
-                let result = convert_url(li, link_attributes);
+                for (var i = 0; i < obj.length; i++) {
 
-                courses.push([tit, des, result])
+                    console.log("bye");
 
 
+                    var tit = obj[i].title;
+                    var des = obj[i].description;
+                    var li = obj[i].link;
+
+                    let link_attributes = {
+                        target: '_blank',
+                        class: 'mylink',
+                        rel: 'nofollow noopener'
+                    };
+                    let result = convert_url(li, link_attributes);
+
+                    courses.push([tit, des, result])
 
 
 
-            }
 
-            arr1 = [];
 
-            arr1.push(courses[0]);
-
-            for (let i = courses.length - 1; i > 0; i--) {
-                arr1.push(courses[i]);
-            }
-
-            var table = document.createElement("TABLE");
-            table.border = "8";
-
-            //Get the count of columns.
-            var columnCount = arr1[0].length;
-
-            //Add the header row.
-            var row = table.insertRow(-1);
-            for (var i = 0; i < columnCount; i++) {
-                var headerCell = document.createElement("TH");
-                headerCell.innerHTML = arr1[0][i];
-                row.appendChild(headerCell);
-            }
-
-            //Add the data rows.
-            for (var i = 1; i < arr1.length; i++) {
-                row = table.insertRow(-1);
-                for (var j = 0; j < columnCount; j++) {
-                    var cell = row.insertCell(-1);
-                    cell.innerHTML = arr1[i][j];
                 }
-            }
 
-            var dvTable = document.getElementById("dvTable");
-            dvTable.innerHTML = "";
-            dvTable.appendChild(table);
+                arr1 = [];
 
-            // datas = obj;
-            // classes_element = ``;
-            // title = ``;
-            // description = ``;
-            // course = ``;
+                arr1.push(courses[0]);
 
+                for (let i = courses.length - 1; i > 0; i--) {
+                    arr1.push(courses[i]);
+                }
 
+                var table = document.createElement("TABLE");
+                table.border = "8";
 
-            console.log(obj[0].title);
-            console.log(obj[0].course);
+                //Get the count of columns.
+                var columnCount = arr1[0].length;
 
+                //Add the header row.
+                var row = table.insertRow(-1);
+                for (var i = 0; i < columnCount; i++) {
+                    var headerCell = document.createElement("TH");
+                    headerCell.innerHTML = arr1[0][i];
+                    row.appendChild(headerCell);
+                }
 
+                //Add the data rows.
+                for (var i = 1; i < arr1.length; i++) {
+                    row = table.insertRow(-1);
+                    for (var j = 0; j < columnCount; j++) {
+                        var cell = row.insertCell(-1);
+                        cell.innerHTML = arr1[i][j];
+                    }
+                }
 
+                var dvTable = document.getElementById("dvTable");
+                dvTable.innerHTML = "";
+                dvTable.appendChild(table);
 
-        }).catch(function (error) {
-            console.log("Error...");
+            }).catch(function (error) {
+                console.log("Error...");
 
-        })
+            })
+
+        }
 
 
 

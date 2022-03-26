@@ -79,9 +79,11 @@
 
             if (!json.isStaff && json.accessToken != undefined) {
 
-              window.location.href = "./student.html";
+              console.log(json.username);
+              window.location.href = "./student.html?username=" + json.username;
 
-              getStudentId(json.username);
+
+
 
 
             }
@@ -105,34 +107,6 @@
 
 
 
-    async function getStudentId(name) {
-
-
-      console.log(name)
-
-
-
-      await fetch("http://localhost:4000/student/get/name/" + name, {
-        method: "GET",
-        // body: JSON.stringify({
-        //     title: document.getElementById('title').value,
-        //     description: document.getElementById('description').value,
-        //     course: document.getElementById('link').value,
-        //     stafflink: document.getElementById('stafflink').value,
-        // }),
-
-        headers: {
-          "Content-type": "application/json; charset=UTF-8"
-        }
-      })
-        .then(response => response.json())
-        .then(json => console.log(json));
-
-
-
-
-
-    }
 
   </script>
 </body>

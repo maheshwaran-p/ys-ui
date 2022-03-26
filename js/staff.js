@@ -6,18 +6,12 @@ async function getCourse(id) {
     console.log(id)
 
     if (id !== "") {
-
-
         id = parseInt(id);
         cid = id;
 
         window.location.href = "./marks.html?cid=" + id;
 
         console.log(id + 50);
-
-
-
-
 
         if (typeof (Storage) !== "undefined") {
             localStorage.setItem('CourseId', id);

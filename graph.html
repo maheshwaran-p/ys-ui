@@ -1,0 +1,48 @@
+<link rel="stylesheet" href="css/graph.css">
+
+<body>
+    <section class="bar-graph bar-graph-vertical bar-graph-two">
+
+
+
+        <div class="bar-one bar-container">
+            <div class="bar" data-percentage="40%"></div>
+            <span class="year">2019</span>
+        </div>
+
+
+
+    </section>
+
+
+
+
+    <script>
+        window.onload = tabledata();
+
+        async function tabledata() {
+
+
+            let urlString =
+                window.location.href;
+            let paramString = urlString.split('?')[1];
+            let queryString = new URLSearchParams(paramString);
+            let pair = []
+            for (pair of queryString.entries()) {
+                console.log("Key is:" + pair[0]);
+                console.log("Value is:" + pair[1]);
+            }
+
+
+
+
+
+
+
+
+        }
+
+
+    </script>
+
+</body>
