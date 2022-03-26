@@ -12,7 +12,6 @@ async function postMarks(courseId, jsonArray) {
         method: "POST",
         body: JSON.stringify({
             addcourseId: courseId,
-            total: document.getElementById('total').value,
             studentMark: jsonArray
 
         }),
@@ -26,6 +25,24 @@ async function postMarks(courseId, jsonArray) {
 
 
     console.log('cid:' + courseId + "total" + total);
+
+
+
+    await fetch("http://localhost:4000/total", {
+        method: "POST",
+        body: JSON.stringify({
+            addcourseId: courseId,
+            total: document.getElementById('total').value,
+
+
+        }),
+
+        headers: {
+            "Content-type": "application/json; charset=UTF-8"
+        }
+    })
+    // .then(response => response.json())
+    // .then(json => console.log(json));
 
 
 }
