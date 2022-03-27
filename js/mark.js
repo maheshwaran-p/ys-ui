@@ -28,10 +28,10 @@ async function postMarks(courseId, jsonArray) {
 
 
 
-    await fetch("http://localhost:4000/total", {
+    await fetch("http://localhost:4000/addcourse/total/" + courseId, {
         method: "POST",
         body: JSON.stringify({
-            addcourseId: courseId,
+
             total: document.getElementById('total').value,
 
 

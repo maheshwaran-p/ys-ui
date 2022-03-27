@@ -1,19 +1,12 @@
 <link rel="stylesheet" href="css/graph.css">
 
-<body>
-    <section class="bar-graph bar-graph-vertical bar-graph-two">
+<body id="bar">
 
 
-
-        <div class="bar-one bar-container">
-            <div class="bar" data-percentage="40%"></div>
-            <span class="year">2019</span>
-        </div>
-
-
-
-    </section>
-
+    <div class="bar-one bar-container">
+        <div class="bar" data-percentage="40%"></div>
+        <span class="year">2019</span>
+    </div>
 
 
 
@@ -35,6 +28,52 @@
 
 
 
+
+            await fetch("http://localhost:4000/marks/percentage/" + pair[1], {
+                method: "GET",
+                // body: JSON.stringify({
+                //     title: document.getElementById('title').value,
+                //     description: document.getElementById('description').value,
+                //     course: document.getElementById('link').value,
+                //     stafflink: document.getElementById('stafflink').value,
+                // }),
+
+                headers: {
+                    "Content-type": "application/json; charset=UTF-8"
+                }
+            })
+                .then(response => response.json())
+                .then(json => {
+                    console.log(json)
+
+                    // console.log("len: " + json.length);
+                    // console.log("smark" + json[0].marks_mark);
+                    // console.log("tmark" + json[0].addcourse_total);
+                    // console.log("title" + json[0].addcourse_title);
+                    // console.log("des" + json[0].addcourse_description);
+                    // console.log("id" + json.id);
+
+                    for (var i = 0; i < json.length; i++) {
+                        var percentage = (json[i].marks_mark / json[i].addcourse_total) * 100;
+                        console.log("percentage" + percentage);
+
+                        document.getElementById("bar").innerHTML = `    var box = document.createElement("DIV");
+    box.setAttribute("id", "box");
+    document.body.appendChild(box);
+    var boxStyle = document.getElementById("box").style;
+    boxStyle.position = "absolute"; 
+    boxStyle.background = '#'+Math.floor(Math.random()*16777215).toString(16);
+    boxStyle.width = Math.floor(Math.random()*50) + '%';
+    boxStyle.height = Math.floor(Math.random()*50) + '%';
+    boxStyle.top = Math.floor(Math.random()*100) + '%';
+    boxStyle.left = Math.floor(Math.random()*100) + '%';  <section class="bar-graph bar-graph-vertical bar-graph-two"> <div  class="bar-one bar-container">  <div class="bar" data-percentage="${percentage}%"></div>
+            <span class="year">${json[i].addcourse_title}</span>   </div>   </section>
+`;
+
+
+                    }
+
+                });
 
 
 
