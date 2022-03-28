@@ -186,6 +186,17 @@
             </div>
 
 
+            <div onclick="leaderboard()" class="col-md-4 col-xl-6">
+                <div class="card bg-c-blue order-card">
+                    <div class="card-block">
+                        <h6 class="m-b-20"> <a style="text-decoration: none;color:white;">Leader Board</a> </h6>
+                        <h2 class="text-right"><i class="fas fa-plus f-left"></i></h2>
+
+                    </div>
+                </div>
+            </div>
+
+
 
 
 
@@ -249,6 +260,21 @@
 
         }
 
+        function leaderboard() {
+
+            let urlString =
+                window.location.href;
+            let paramString = urlString.split('?')[1];
+            let queryString = new URLSearchParams(paramString);
+            let pair = []
+            for (pair of queryString.entries()) {
+                console.log("Key is:" + pair[0]);
+                console.log("Value is:" + pair[1]);
+            }
+
+
+            window.location.href = "./leaderboard.html?username=" + pair[1];
+        }
 
         async function studentnote() {
 
@@ -375,6 +401,8 @@
             })
 
         }
+
+
 
 
         function taketest(course) {

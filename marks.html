@@ -7,6 +7,8 @@
     <script src="js/register.js"></script>
     <script src="js/staff.js"></script>
     <script src="js/mark.js"></script>
+    <link rel="stylesheet" href="css/login.css">
+    <script src="js/register.js"></script>
 
 
     <title>Marks</title>
@@ -94,11 +96,11 @@
 
 
     <br><br> <br><br>
-    <input type="text" id="total" name="total" value="" placeholder="Tatal Mark for this Course">
+    <input type="text" id="total" name="total" value="" placeholder="Tatal Mark for this Course" required>
     <br><br> <br>
 
     <input align="center" type="button" class="button" onclick="mark1()" value="Update Marks">
-
+    <div id="snackbar">Total Mark is required</div>
 
 
 
@@ -139,49 +141,87 @@
 
 
         function mark1() {
+            var total = document.getElementById('total').value;
+
+            if (total != '') {
 
 
+
+                let urlString =
+                    window.location.href;
+                let paramString = urlString.split('?')[1];
+                let queryString = new URLSearchParams(paramString);
+                let pair = []
+                for (pair of queryString.entries()) {
+                    console.log("Key is:" + pair[0]);
+                    console.log("Value is:" + pair[1]);
+                }
+                for (var k = 0; k < ids.length; k++) {
+                    mark = document.getElementById(ids[k]).value;
+                    marks.push(mark);
+                }
+                console.log("lenght:" + marks.length);
+
+
+                console.log(marks[0]);
+                console.log(marks[1]);
+
+                ids.reverse();
+                // console.log(ids[0]);
+
+                studentMark = {};
+
+                var jsonArray = [];
+
+                for (let i = 0; i < ids.length; i++) {
+
+                    studentMark.studentId = ids[i];
+                    studentMark.mark = marks[i];
+
+                    jsonArray.push({ ...studentMark });
+
+                }
+
+                postMarks(pair[1], jsonArray);
+
+            }
+            else {
+                var x = document.getElementById("snackbar");
+                x.className = "show";
+                setTimeout(function () { x.className = x.className.replace("show", ""); }, 3000);
+            }
+
+        }
+
+        async function tabledata() {
 
             let urlString =
                 window.location.href;
             let paramString = urlString.split('?')[1];
             let queryString = new URLSearchParams(paramString);
-            let pair = []
+            let pair = [];
+            marksfromserver = [];
             for (pair of queryString.entries()) {
                 console.log("Key is:" + pair[0]);
                 console.log("Value is:" + pair[1]);
             }
-            for (var k = 0; k < ids.length; k++) {
-                mark = document.getElementById(ids[k]).value;
-                marks.push(mark);
-            }
-            console.log("lenght:" + marks.length);
+            await fetch('http://localhost:4000/marks/get/' + pair[1]).then(function (response) {
+                return response.json();
 
+            }).then(function (obj) {
 
-            console.log(marks[0]);
-            console.log(marks[1]);
+                console.log(obj);
 
-            ids.reverse();
-            // console.log(ids[0]);
+                console.log(obj[0].mark);
 
-            studentMark = {};
+                for (var i = 0; i < obj.length; i++) {
+                    marksfromserver.push(obj[i].mark);
 
-            var jsonArray = [];
+                }
 
-            for (let i = 0; i < ids.length; i++) {
-
-                studentMark.studentId = ids[i];
-                studentMark.mark = marks[i];
-
-                jsonArray.push({ ...studentMark });
-
-            }
-
-            postMarks(pair[1], jsonArray);
-
-        }
-
-        async function tabledata() {
+            }).catch(function (error) {
+                console.log(error);
+            })
 
             await fetch('http://localhost:4000/student/get').then(function (response) {
                 return response.json();
@@ -205,6 +245,7 @@
 
 
                     var user = obj[i].username;
+
 
                     let id1 = obj[i].id;
                     console.log(obj[i].username);
@@ -271,7 +312,7 @@
                         var cell = row.insertCell(-1);
                         cell.innerHTML = arr1[i][j];
                         if (j != 0) {
-                            cell.innerHTML = `<div><input  id="${obj[i - 1].id}" value="0" type="number"></div>`
+                            cell.innerHTML = `<div><input  id="${obj[i - 1].id}" value="${marksfromserver[i - 1]}" type="number"></div>`
 
 
 
@@ -290,7 +331,7 @@
                 }
 
 
-                console.log("mark......" + marks[0])
+                //console.log("mark......" + marks[0])
 
 
 
