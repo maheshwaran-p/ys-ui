@@ -10,7 +10,6 @@
  */
 
 // Wait for the DOM to load everything, just to be safe
-
 $(document).ready(function () {
     // hide table if js enabled
     $('#data-table').addClass('js');

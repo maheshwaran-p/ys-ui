@@ -22,6 +22,7 @@ body {
     position: relative;
     text-align: center;
     width: 100px;
+    left:20px
   }
   
   .bar-graph-vertical .bar {
@@ -29,6 +30,7 @@ body {
     bottom: 40px;
     position: absolute;
     width: 80px;
+    left: 20px;
   }
   
   .bar-graph-vertical .year {
