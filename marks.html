@@ -106,7 +106,7 @@
 
     <script>
 
-
+        window.onload = tabledata();
 
 
 
@@ -181,127 +181,129 @@
 
         }
 
-        fetch('http://localhost:4000/student/get').then(function (response) {
-            return response.json();
+        async function tabledata() {
 
-        }).then(function (obj) {
+            await fetch('http://localhost:4000/student/get').then(function (response) {
+                return response.json();
 
-
-            var courses = new Array();
-
-
-            console.log(obj);
+            }).then(function (obj) {
 
 
+                var courses = new Array();
 
 
-            courses.push(["Student    ", " Marks",]);
-
-            for (var i = 0; i < obj.length; i++) {
-
-                console.log("bye");
-
-
-                var user = obj[i].username;
-
-                let id1 = obj[i].id;
-                console.log(obj[i].username);
-
-
-                let link_attributes = {
-                    target: '_blank',
-                    class: 'mylink',
-                    rel: 'nofollow noopener'
-                };
+                console.log(obj);
 
 
 
-                //  let result = convert_url(co, link_attributes);
+
+                courses.push(["Student    ", " Marks",]);
+
+                for (var i = 0; i < obj.length; i++) {
+
+                    console.log("bye");
 
 
-                // let result2 = convert_url(staff, link_attributes);
+                    var user = obj[i].username;
 
-                //   let result3 = convert_url3(id1, "https://delete/course/", link_attributes);
-
-                // console.log(result3);
-
-
-                courses.push([user])
+                    let id1 = obj[i].id;
+                    console.log(obj[i].username);
 
 
-
-            }
-
-
-
-            for (var i = 0; i < obj.length; i++)
-                ids.push(obj[i].id);
-
-
-
-            arr1.push(courses[0]);
-
-            for (let i = courses.length - 1; i > 0; i--) {
-                arr1.push(courses[i]);
-            }
-
-
-            var table = document.createElement("TABLE");
-            table.border = "8";
-
-            //Get the count of columns.
-            var columnCount = arr1[0].length;
-
-            //Add the header row.
-            var row = table.insertRow(-1);
-            for (var i = 0; i < columnCount; i++) {
-                var headerCell = document.createElement("TH");
-                headerCell.innerHTML = arr1[0][i];
-
-                row.appendChild(headerCell);
-            }
-
-            //Add the data rows.
-            for (var i = 1; i < arr1.length; i++) {
-                row = table.insertRow(-1);
-                // console.log(obj[i - 1].id);
-                for (var j = 0; j < columnCount; j++) {
-                    var cell = row.insertCell(-1);
-                    cell.innerHTML = arr1[i][j];
-                    if (j != 0) {
-                        cell.innerHTML = `<div><input  id="${obj[i - 1].id}" value="0" type="number"></div>`
+                    let link_attributes = {
+                        target: '_blank',
+                        class: 'mylink',
+                        rel: 'nofollow noopener'
+                    };
 
 
 
-                        // mark = arr1[i][j];
+                    //  let result = convert_url(co, link_attributes);
 
-                        // marks.push(mark);
-                    }
-                    // cell.innerHTML = cell.innerHTML;
-                    // mark = document.getElementById("marks").value;
 
-                    // marks.push(mark);
+                    // let result2 = convert_url(staff, link_attributes);
+
+                    //   let result3 = convert_url3(id1, "https://delete/course/", link_attributes);
+
+                    // console.log(result3);
+
+
+                    courses.push([user])
 
 
 
                 }
-            }
-
-
-            console.log("mark......" + marks[0])
 
 
 
-            var dvTable = document.getElementById("dvTable");
-            dvTable.innerHTML = "";
-            dvTable.appendChild(table);
-        }).catch(function (error) {
-            console.log("Error...");
-
-        })
+                for (var i = 0; i < obj.length; i++)
+                    ids.push(obj[i].id);
 
 
 
+                arr1.push(courses[0]);
+
+                for (let i = courses.length - 1; i > 0; i--) {
+                    arr1.push(courses[i]);
+                }
+
+
+                var table = document.createElement("TABLE");
+                table.border = "8";
+
+                //Get the count of columns.
+                var columnCount = arr1[0].length;
+
+                //Add the header row.
+                var row = table.insertRow(-1);
+                for (var i = 0; i < columnCount; i++) {
+                    var headerCell = document.createElement("TH");
+                    headerCell.innerHTML = arr1[0][i];
+
+                    row.appendChild(headerCell);
+                }
+
+                //Add the data rows.
+                for (var i = 1; i < arr1.length; i++) {
+                    row = table.insertRow(-1);
+                    // console.log(obj[i - 1].id);
+                    for (var j = 0; j < columnCount; j++) {
+                        var cell = row.insertCell(-1);
+                        cell.innerHTML = arr1[i][j];
+                        if (j != 0) {
+                            cell.innerHTML = `<div><input  id="${obj[i - 1].id}" value="0" type="number"></div>`
+
+
+
+                            // mark = arr1[i][j];
+
+                            // marks.push(mark);
+                        }
+                        // cell.innerHTML = cell.innerHTML;
+                        // mark = document.getElementById("marks").value;
+
+                        // marks.push(mark);
+
+
+
+                    }
+                }
+
+
+                console.log("mark......" + marks[0])
+
+
+
+                var dvTable = document.getElementById("dvTable");
+                dvTable.innerHTML = "";
+                dvTable.appendChild(table);
+            }).catch(function (error) {
+                console.log("Error...");
+
+            })
+
+
+        }
 
 
         function taketest(course) {

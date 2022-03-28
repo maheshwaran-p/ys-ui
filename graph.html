@@ -465,16 +465,104 @@
     <title>Bring Your Charts to Life</title>
     <script type="text/javascript">
 
-        // chart sample data
-        var arrVisitors = new Array();
-        arrVisitors[0] = "2007, 750";
-        arrVisitors[1] = "2008, 425";
-        arrVisitors[2] = "2009, 960";
-        arrVisitors[3] = "2010, 700";
-        arrVisitors[4] = "2011, 800";
-        arrVisitors[5] = "2012, 975";
-        arrVisitors[6] = "2013, 375";
-        arrVisitors[7] = "2014, 775";
+        window.onload = tabledata();
+        let arrVisitors = new Array();
+        let per = [];
+        let tit = [];
+
+
+        async function tabledata() {
+
+            let urlString =
+                window.location.href;
+            let paramString = urlString.split('?')[1];
+            let queryString = new URLSearchParams(paramString);
+            let pair = [];
+
+            for (pair of queryString.entries()) {
+                console.log("Key is:" + pair[0]);
+                console.log("Value is:" + pair[1]);
+            }
+
+
+            await fetch("http://localhost:4000/marks/percentage/" + pair[1], {
+                method: "GET",
+                // body: JSON.stringify({
+                //     title: document.getElementById('title').value,
+                //     description: document.getElementById('description').value,
+                //     course: document.getElementById('link').value,
+                //     stafflink: document.getElementById('stafflink').value,
+                // }),
+
+                headers: {
+                    "Content-type": "application/json; charset=UTF-8"
+                }
+            })
+                .then(response => response.json())
+                .then(json => {
+                    console.log(json)
+
+                    // console.log("len: " + json.length);
+                    // console.log("smark" + json[0].marks_mark);
+                    // console.log("tmark" + json[0].addcourse_total);
+                    // console.log("title" + json[0].addcourse_title);
+                    // console.log("des" + json[0].addcourse_description);
+                    // console.log("id" + json.id);
+
+                    console.log("json len: " + json.length);
+
+                    for (var i = 0; i < json.length; i++) {
+                        var percentage = (json[i].marks_mark / json[i].addcourse_total) * 100;
+
+                        percentage = percentage.toString();
+
+                        console.log("title : " + json[i].addcourse_title);
+                        console.log("percentage :    " + percentage);
+                        per.push(percentage);
+                        tit.push(json[i].addcourse_title);
+
+                        arrVisitors[i] = `${json[i].addcourse_title},${percentage}`;
+
+                        // console.log(arrVisitors[i])
+
+                    }
+
+                });
+
+
+            //console.log(arrVisitors[0])
+            // console.log("per len:" + tit.length);
+            // let studentMark = [];
+            // for (let i = 0; i < per.length; i++) {
+
+            //     studentMark.studentId = tit[i];
+            //     studentMark.mark = per[i];
+
+            //     jsonArray.push({ ...studentMark });
+
+            // }
+
+            // chart sample data
+
+
+            // arrVisitors[0] = "2007, 100";
+            // arrVisitors[1] = "2008, 86";
+            // arrVisitors[2] = "2009, 35";
+            // arrVisitors[3] = "2010, 700";
+            // arrVisitors[4] = "2011, 800";
+            // arrVisitors[5] = "2012, 975";
+            // arrVisitors[6] = "2013, 375";
+            // arrVisitors[7] = "2014, 775";
+
+            for (var k = 0; k < per.length; k++) {
+                // arrVisitors[k] = `${tit[i]},${per[i]}`;
+
+                console.log(arrVisitors[k]);
+            }
+
+            barChart();
+
+        }
 
         var canvas;
         var context;
@@ -504,6 +592,8 @@
 
         // initialize the chart and bar values
         function chartSettings() {
+
+            console.log("In sette" + arrVisitors.length);
             // chart properties
             cMargin = 25;
             cSpace = 60;
