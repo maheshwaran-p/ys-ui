@@ -1,468 +1,27 @@
-<!-- <link rel="stylesheet" href="css/graph.css">
-
-
-
-
-
-<body>
-
-    <section id="bar" class="bar-graph bar-graph-vertical bar-graph-two">
-
-
-
-
-
-    </section>
-
-
-
-
-    <script>
-        window.onload = tabledata();
-
-        async function tabledata() {
-
-
-            let urlString =
-                window.location.href;
-            let paramString = urlString.split('?')[1];
-            let queryString = new URLSearchParams(paramString);
-            let pair = []
-            for (pair of queryString.entries()) {
-                console.log("Key is:" + pair[0]);
-                console.log("Value is:" + pair[1]);
-            }
-
-
-
-
-            await fetch("http://localhost:4000/marks/percentage/" + pair[1], {
-                method: "GET",
-                // body: JSON.stringify({
-                //     title: document.getElementById('title').value,
-                //     description: document.getElementById('description').value,
-                //     course: document.getElementById('link').value,
-                //     stafflink: document.getElementById('stafflink').value,
-                // }),
-
-                headers: {
-                    "Content-type": "application/json; charset=UTF-8"
-                }
-            })
-                .then(response => response.json())
-                .then(json => {
-                    console.log(json)
-
-                    // console.log("len: " + json.length);
-                    // console.log("smark" + json[0].marks_mark);
-                    // console.log("tmark" + json[0].addcourse_total);
-                    // console.log("title" + json[0].addcourse_title);
-                    // console.log("des" + json[0].addcourse_description);
-                    // console.log("id" + json.id);
-
-                    for (var i = 0; i < json.length; i++) {
-                        var percentage = (json[i].marks_mark / json[i].addcourse_total) * 100;
-                        console.log("percentage" + percentage);
-
-                        document.getElementById("bar").innerHTML = ` <div id="bar" class="bar-one bar-container"> <div class="bar" data-percentage="${percentage}%"></div>
-            <span class="year">${json[i].addcourse_title}</span> </div>   
-`;
-
-
-                    }
-
-                });
-
-
-
-
-
-        }
-
-
-    </script>
-
-</body>
-
-
-<!doctype html>
-
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title></title>
-</head>
-
-<body>
-    <div id="label-container"></div>
-
-
-    <script>
-
-        window.onload = tabledata();
-
-        async function tabledata() {
-
-
-            let urlString =
-                window.location.href;
-            let paramString = urlString.split('?')[1];
-            let queryString = new URLSearchParams(paramString);
-            let pair = []
-            for (pair of queryString.entries()) {
-                console.log("Key is:" + pair[0]);
-                console.log("Value is:" + pair[1]);
-            }
-
-
-
-
-            await fetch("http://localhost:4000/marks/percentage/" + pair[1], {
-                method: "GET",
-                // body: JSON.stringify({
-                //     title: document.getElementById('title').value,
-                //     description: document.getElementById('description').value,
-                //     course: document.getElementById('link').value,
-                //     stafflink: document.getElementById('stafflink').value,
-                // }),
-
-                headers: {
-                    "Content-type": "application/json; charset=UTF-8"
-                }
-            })
-                .then(response => response.json())
-                .then(json => {
-                    console.log(json)
-
-                    // console.log("len: " + json.length);
-                    // console.log("smark" + json[0].marks_mark);
-                    // console.log("tmark" + json[0].addcourse_total);
-                    // console.log("title" + json[0].addcourse_title);
-                    // console.log("des" + json[0].addcourse_description);
-                    // console.log("id" + json.id);
-                    let labelContainer = document.getElementById("label-container");
-
-                    for (var i = 0; i < json.length; i++) {
-                        var percentage = (json[i].marks_mark / json[i].addcourse_total) * 100;
-                        console.log("percentage" + percentage);
-
-
-
-                        let el = document.createElement("div")
-                        el.className = 'prediction-bar'
-                        labelContainer.appendChild(el);
-
-                        const classPrediction =
-                            json[i].addcourse_title + ": " + percentage.toFixed(2);
-
-                        labelContainer.childNodes[i].innerHTML = `
-          <div class="name-progress">${classPrediction}</div>
-            <div class="progress">
-              <div class="inner-progress" style="width:${percentage.toFixed(2) * 100}%">${percentage.toFixed(2) * 100}%
-             </div>
-          </div>`;
-
-
-
-                    }
-
-                });
-
-
-        }
-    </script>
-</body>
-
-</html> -->
-
-<!-- 
-
-<!DOCTYPE HTML>
-<html>
-
-<head>
-    <script type="text/javascript">
-
-        per = [];
-        window.onload = function () {
-
-            let urlString =
-                window.location.href;
-            let paramString = urlString.split('?')[1];
-            let queryString = new URLSearchParams(paramString);
-            let pair = []
-            for (pair of queryString.entries()) {
-                console.log("Key is:" + pair[0]);
-                console.log("Value is:" + pair[1]);
-            }
-
-            fetch("http://localhost:4000/marks/percentage/" + pair[1], {
-                method: "GET",
-                // body: JSON.stringify({
-                //     title: document.getElementById('title').value,
-                //     description: document.getElementById('description').value,
-                //     course: document.getElementById('link').value,
-                //     stafflink: document.getElementById('stafflink').value,
-                // }),
-
-                headers: {
-                    "Content-type": "application/json; charset=UTF-8"
-                }
-            })
-                .then(response => response.json())
-                .then(json => {
-                    console.log(json)
-
-                    // console.log("len: " + json.length);
-                    // console.log("smark" + json[0].marks_mark);
-                    // console.log("tmark" + json[0].addcourse_total);
-                    // console.log("title" + json[0].addcourse_title);
-                    // console.log("des" + json[0].addcourse_description);
-                    // console.log("id" + json.id);
-
-                    for (var i = 0; i < json.length; i++) {
-                        var percentage = (json[i].marks_mark / json[i].addcourse_total) * 100;
-                        console.log("percentage" + percentage);
-                        per.push(percentage);
-
-                    }
-
-                });
-
-            var dps = [{ x: 1, y: per[0] },];   //dataPoints. 
-
-            var chart = new CanvasJS.Chart("chartContainer", {
-                title: {
-                    text: "Live Data"
-                },
-                axisX: {
-                    title: "Axis X Title"
-                },
-                axisY: {
-                    title: "Units"
-                },
-                data: [{
-                    type: "line",
-                    dataPoints: dps
-                }]
-            });
-
-            chart.render();
-            var xVal = dps.length + 1;
-            var yVal = 100;
-            var updateInterval = 1000;
-            var index = 1;
-
-            var updateChart = function () {
-
-
-
-                yVal = per[index];
-
-                //  yVal = yVal + Math.round(5 + Math.random() * (-5 - 5));
-                dps.push({ x: xVal, y: yVal });
-
-                xVal++;
-                if (dps.length > 100) {
-                    //  dps.shift();
-                }
-
-                chart.render();
-
-                // update chart after specified time. 
-                index++;
-
-            };
-
-            //setInterval(function () { updateChart() }, updateInterval);
-        }
-    </script>
-    <script type="text/javascript" src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
-</head>
-
-<body>
-    <div id="chartContainer" style="height: 600px; width: 70%;">
-    </div>
-</body>
-
-</html> -->
-
-
-<!-- <!DOCTYPE html>
-<html>
-
-<head>
-    <script>
-        window.onload = function () {
-
-            var chart = new CanvasJS.Chart("chartContainer", {
-                animationEnabled: true,
-                title: {
-                    text: "Hourly Average CPU Utilization"
-                },
-                axisX: {
-                    title: "Time"
-                },
-                axisY: {
-                    title: "Percentage",
-                    suffix: "%",
-                    includeZero: true
-                },
-                data: [{
-                    type: "line",
-                    name: "CPU Utilization",
-                    connectNullData: true,
-                    //nullDataLineDashType: "solid",
-                    xValueType: "dateTime",
-                    xValueFormatString: "DD MMM hh:mm TT",
-                    yValueFormatString: "#,##0.##\"%\"",
-                    dataPoints: [
-                        { x: 1501048673000, y: 35.939 },
-                        { x: 1501052273000, y: 40.896 },
-                        { x: 1501055873000, y: 56.625 },
-                        { x: 1501059473000, y: 26.003 },
-                        { x: 1501063073000, y: 20.376 },
-                        { x: 1501066673000, y: 19.774 },
-                        { x: 1501070273000, y: 23.508 },
-                        { x: 1501073873000, y: 18.577 },
-                        { x: 1501077473000, y: 15.918 },
-                        { x: 1501081073000, y: null }, // Null Data
-                        { x: 1501084673000, y: 10.314 },
-                        { x: 1501088273000, y: 10.574 },
-                        { x: 1501091873000, y: 14.422 },
-                        { x: 1501095473000, y: 18.576 },
-                        { x: 1501099073000, y: 22.342 },
-                        { x: 1501102673000, y: 22.836 },
-                        { x: 1501106273000, y: 23.220 },
-                        { x: 1501109873000, y: 23.594 },
-                        { x: 1501113473000, y: 24.596 },
-                        { x: 1501117073000, y: 31.947 },
-                        { x: 1501120673000, y: 31.142 }
-                    ]
-                }]
-            });
-            chart.render();
-
-        }
-    </script>
-</head>
-
-<body>
-    <div id="chartContainer" style="height: 300px; width: 100%;"></div>
-    <script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
-</body>
-
-</html> -->
-
-<!-- 
-
-<div id="container" style="width: 75%;">
-    <canvas id="population-chart" data-url=""></canvas>
-</div>
-
-<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.3/dist/Chart.min.js"></script>
-<script>
-
-    $(function () {
-
-
-        let urlString =
-            window.location.href;
-        let paramString = urlString.split('?')[1];
-        let queryString = new URLSearchParams(paramString);
-        let pair = []
-        for (pair of queryString.entries()) {
-            console.log("Key is:" + pair[0]);
-            console.log("Value is:" + pair[1]);
-        }
-
-        // fetch("http://localhost:4000/marks/percentage/" + pair[1], {
-        //     method: "GET",
-        //     // body: JSON.stringify({
-        //     //     title: document.getElementById('title').value,
-        //     //     description: document.getElementById('description').value,
-        //     //     course: document.getElementById('link').value,
-        //     //     stafflink: document.getElementById('stafflink').value,
-        //     // }),
-
-        //     headers: {
-        //         "Content-type": "application/json; charset=UTF-8"
-        //     }
-        // })
-        // .then(response => response.json())
-        // .then(json => {
-        //     console.log(json)
-
-        //     // console.log("len: " + json.length);
-        //     // console.log("smark" + json[0].marks_mark);
-        //     // console.log("tmark" + json[0].addcourse_total);
-        //     // console.log("title" + json[0].addcourse_title);
-        //     // console.log("des" + json[0].addcourse_description);
-        //     // console.log("id" + json.id);
-
-        //     for (var i = 0; i < json.length; i++) {
-        //         var percentage = (json[i].marks_mark / json[i].addcourse_total) * 100;
-        //         console.log("percentage" + percentage);
-        //         per.push(percentage);
-
-        //     }
-
-        // });
-
-        var $populationChart = $("#population-chart");
-        $.ajax({
-            url: $populationChart.data("http://localhost:4000/marks/percentage/" + pair[1],),
-            success: function (data) {
-
-                var ctx = $populationChart[0].getContext("2d");
-
-
-                new Chart(ctx, {
-                    type: 'bar',
-                    data: {
-                        labels: data.addcourse_title,
-                        datasets: [{
-                            label: 'Attendence',
-                            backgroundColor: 'red',
-                            data: data.marks_mark
-                        }]
-                    },
-                    options: {
-                        responsive: true,
-                        scales: {
-                            yAxes: [{
-                                ticks: {
-                                    min: 1
-                                }
-                            }]
-                        },
-                        legend: {
-                            position: 'top',
-                        },
-                        title: {
-                            display: true,
-                            text: 'Listening Time'
-                        }
-                    }
-                });
-
-            }
-        });
-
-    });
-
-</script> -->
-
-
-
 <!DOCTYPE>
 <html xmlns="http://www.w3.org/1999/xhtml">
 
 <head>
+    <style>
+        a:link {
+            text-decoration: none;
+        }
+
+        h6 {
+            text-align: center;
+        }
+
+        .row {
+            margin: 60px;
+        }
+
+        th,
+        td {
+            padding: 15px;
+        }
+    </style>
     <link href="Content/Site.css" rel="stylesheet" type="text/css" />
-    <title>Bring Your Charts to Life</title>
+    <title>Student Progress</title>
     <script type="text/javascript">
 
         window.onload = tabledata();
@@ -478,6 +37,11 @@
             let paramString = urlString.split('?')[1];
             let queryString = new URLSearchParams(paramString);
             let pair = [];
+
+
+            var courses = new Array();
+
+            courses.push(["   Title    ", "  Marks Obtained    ", "    Total Marks   ", "Percentage"]);
 
             for (pair of queryString.entries()) {
                 console.log("Key is:" + pair[0]);
@@ -523,9 +87,59 @@
 
                         arrVisitors[i] = `${json[i].addcourse_title},${percentage}`;
 
-                        // console.log(arrVisitors[i])
+                        var tit2 = json[i].addcourse_title;
+                        var om = json[i].marks_mark;
+                        var to = json[i].addcourse_total;
+
+                        id1 = [];
+                        id1.push(json[i].id)
+                        courses.push([tit2, om, to, percentage])
 
                     }
+
+
+
+
+                    // courses.reverse();
+                    arr1 = [];
+                    id2 = [];
+
+                    arr1.push(courses[0]);
+                    id2.push(0);
+
+                    for (let i = courses.length - 1; i > 0; i--) {
+                        arr1.push(courses[i]);
+                        id2.push(id1[i])
+                    }
+
+
+                    var table = document.createElement("TABLE");
+                    table.border = "2";
+
+                    //Get the count of columns.
+                    var columnCount = arr1[0].length;
+
+                    //Add the header row.
+                    var row = table.insertRow(-1);
+                    for (var i = 0; i < columnCount; i++) {
+                        var headerCell = document.createElement("TH");
+                        headerCell.innerHTML = arr1[0][i];
+                        row.appendChild(headerCell);
+                    }
+
+                    //Add the data rows.
+                    for (var i = 1; i < arr1.length; i++) {
+                        row = table.insertRow(-1);
+                        for (var j = 0; j < columnCount; j++) {
+                            var cell = row.insertCell(-1);
+                            cell.innerHTML = arr1[i][j];
+                        }
+                    }
+
+                    var dvTable = document.getElementById("dvTable");
+                    dvTable.innerHTML = "";
+                    dvTable.appendChild(table);
+
 
                 });
 
@@ -553,6 +167,7 @@
             // arrVisitors[5] = "2012, 975";
             // arrVisitors[6] = "2013, 375";
             // arrVisitors[7] = "2014, 775";
+
 
             for (var k = 0; k < per.length; k++) {
                 // arrVisitors[k] = `${tit[i]},${per[i]}`;
@@ -593,12 +208,12 @@
         // initialize the chart and bar values
         function chartSettings() {
 
-            console.log("In sette" + arrVisitors.length);
+            //  console.log("In sette" + arrVisitors.length);
             // chart properties
             cMargin = 25;
-            cSpace = 60;
-            cHeight = canvas.height - 2 * cMargin - cSpace;
-            cWidth = canvas.width - 2 * cMargin - cSpace;
+            cSpace = 80;
+            cHeight = canvas.height - 1 * cMargin - cSpace;
+            cWidth = canvas.width - 1 * cMargin - cSpace;
             cMarginSpace = cMargin + cSpace;
             cMarginHeight = cMargin + cHeight;
             // bar properties
@@ -608,7 +223,7 @@
 
 
             // find maximum value to plot on chart
-            maxDataValue = 0;
+            maxDataValue = 100;
             for (var i = 0; i < totalBars; i++) {
                 var arrVal = arrVisitors[i].split(",");
                 var barVal = parseInt(arrVal[1]);
@@ -627,7 +242,7 @@
 
         // draw chart axis, labels and markers
         function drawAxisLabelMarkers() {
-            context.lineWidth = "2.0";
+            context.lineWidth = "4.0";
             // draw y axis
             drawAxis(cMarginSpace, cMarginHeight, cMarginSpace, cMargin);
             // draw x axis
@@ -676,12 +291,12 @@
             // Add Y Axis title
             context.translate(cMargin + 10, cHeight / 2);
             context.rotate(Math.PI * -90 / 180);
-            context.fillText('Visitors in Thousands', 0, 0);
+            context.fillText('Percentage', 0, 0);
 
             context.restore();
 
             // Add X Axis Title
-            context.fillText('Year Wise', cMarginSpace + (cWidth / 2), cMarginHeight + 30);
+            context.fillText('Course', cMarginSpace + (cWidth / 2), cMarginHeight + 30);
         }
 
         function drawChartWithAnimation() {
@@ -729,23 +344,48 @@
 </head>
 
 <body onload="barChart();">
+
+
     <div id="body">
+        <div id="dvTable" align="center">
+
+
+
+
+        </div>
         <section class="featured">
             <div class="content-wrapper">
                 <hgroup class="title">
-                    <h1>
-                        Bring your Charts to life with HTML5 Canvas</h1>
+                    <h1 id="progress"></h1>
                 </hgroup>
                 <p>
-                    Rendering Dynamic charts in JS
+
                 </p>
             </div>
         </section>
-        <section class="content-wrapper main-content clear-fix">
+        <section align="center" class="content-wrapper main-content clear-fix">
             <canvas id="bchart" height="400" width="600">
                 Your browser does not support HTML5 Canvas </canvas>
         </section>
     </div>
+    <script>
+
+        let urlString =
+            window.location.href;
+        let paramString = urlString.split('?')[1];
+        let queryString = new URLSearchParams(paramString);
+        let pair = [];
+
+        url = [];
+        for (pair of queryString.entries()) {
+            url.push(pair[1]);
+
+            document.getElementById("progress").innerHTML = url[0] + "'s Progress";
+
+        }
+
+
+    </script>
 </body>
 
 </html>
