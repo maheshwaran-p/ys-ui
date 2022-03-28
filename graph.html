@@ -169,6 +169,7 @@
             // arrVisitors[7] = "2014, 775";
 
 
+
             for (var k = 0; k < per.length; k++) {
                 // arrVisitors[k] = `${tit[i]},${per[i]}`;
 
@@ -347,15 +348,17 @@
 
 
     <div id="body">
-        <div id="dvTable" align="center">
+
+        <h1 id="progress"></h1>
+        <div id="dvTable" style="margin-left: 115px;">
 
 
 
 
         </div>
-        <section class="featured">
-            <div class="content-wrapper">
-                <hgroup class="title">
+        <section align="center" class="featured">
+            <div align="center" class="content-wrapper">
+                <hgroup align="center" class="title">
                     <h1 id="progress"></h1>
                 </hgroup>
                 <p>
@@ -368,6 +371,13 @@
                 Your browser does not support HTML5 Canvas </canvas>
         </section>
     </div>
+
+
+    <style>
+        body {
+            background: linear-gradient(110deg, #ffed4b 60%, #fdcd3b 60%);
+        }
+    </style>
     <script>
 
         let urlString =
