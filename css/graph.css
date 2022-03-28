@@ -1,141 +1,28 @@
-body {
-    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-    padding: 10px 20px;
-  }
-  
-  /* Bar Graph Vertical */
-  .bar-graph .year {
-    -webkit-animation: fade-in-text 2.2s 0.1s forwards;
-    -moz-animation: fade-in-text 2.2s 0.1s forwards;
-    animation: fade-in-text 2.2s 0.1s forwards;
-  }
-  
-  .bar-graph-vertical {
-    margin-top: 10px;
-    max-width: 1080px;
-  }
-  
-  .bar-graph-vertical .bar-container {
-    float: left;
-    height: 750px;
-    margin-right: 8px;
+#label-container > div {
+  margin: 0.5em;
+}
+
+.prediction-bar {
+  display: flex;
+}
+
+.progress {
+    flex: 1;
+    background: #000;
     position: relative;
-    text-align: center;
-    width: 100px;
-    left:20px
-  }
-  
-  .bar-graph-vertical .bar {
-    border-radius: 3px;
-    bottom: 40px;
-    position: absolute;
-    width: 80px;
-    left: 20px;
-  }
-  
-  .bar-graph-vertical .year {
-    bottom: 0;
-    left: 0;
-    margin: 0 auto;
-    position: absolute;
-    right: 10;
-    -webkit-transform: rotate(90deg);
-    -moz-transform: rotate(90deg);
-    -o-transform: rotate(90deg);
-    -ms-transform: rotate(90deg);
-    transform: rotate(90deg);
-  }
-  
-  .bar-graph-two .bar::after {
-    -webkit-animation: fade-in-text 2.2s 0.1s forwards;
-    -moz-animation: fade-in-text 2.2s 0.1s forwards;
-    animation: fade-in-text 2.2s 0.1s forwards;
+    border-radius: 0.25rem;
+    padding: 0.25rem;
+    position: relative;
+    overflow: hidden;
     color: #fff;
-    content: attr(data-percentage);
-    font-weight: 700;
-    left: 0;
-    margin: 0 auto;
-    position: absolute;
-    right: 0;
-    text-align: left;
-    top: 50px;
-    -webkit-transform: rotate(90deg);
-    -moz-transform: rotate(90deg);
-    -o-transform: rotate(90deg);
-    -ms-transform: rotate(90deg);
-    transform: rotate(90deg);
-  }
-  
-  .bar-graph-two .bar-one .bar {
-    background-color: #64b2d1;
-    -webkit-animation: show-bar-one-vertical 1.2s 0.1s forwards;
-    -moz-animation: show-bar-one-vertical 1.2s 0.1s forwards;
-    animation: show-bar-one-vertical 1.2s 0.1s forwards;
-  }
-  
-  .bar-graph-two .bar-two .bar {
-    background-color: #5292ac;
-    -webkit-animation: show-bar-two-vertical 1.2s 0.2s forwards;
-    -moz-animation: show-bar-two-vertical 1.2s 0.2s forwards;
-    animation: show-bar-two-vertical 1.2s 0.2s forwards;
-  }
-  
-  .bar-graph-two .bar-three .bar {
-    background-color: #407286;
-    -webkit-animation: show-bar-three-vertical 1.2s 0.3s forwards;
-    -moz-animation: show-bar-three-vertical 1.2s 0.3s forwards;
-    animation: show-bar-three-vertical 1.2s 0.3s forwards;
-  }
-  
-  .bar-graph-two .bar-four .bar {
-    background-color: #2e515f;
-    -webkit-animation: show-bar-four-vertical 1.2s 0.4s forwards;
-    -moz-animation: show-bar-four-vertical 1.2s 0.4s forwards;
-    animation: show-bar-four-vertical 1.2s 0.4s forwards;
-  }
-  
-  /* Bar Graph Vertical Animations */
-  @-webkit-keyframes show-bar-one-vertical {
-    0% {
-      height: 0;
-    }
-    100% {
-      height: 40%;
-    }
-  }
-  
-  @-webkit-keyframes show-bar-two-vertical {
-    0% {
-      height: 0;
-    }
-    100% {
-      height: 55%;
-    }
-  }
-  
-  @-webkit-keyframes show-bar-three-vertical {
-    0% {
-      height: 0;
-    }
-    100% {
-      height: 68%;
-    }
-  }
-  
-  @-webkit-keyframes show-bar-four-vertical {
-    0% {
-      height: 0;
-    }
-    100% {
-      height: 82%;
-    }
-  }
-  
-  @-webkit-keyframes fade-in-text {
-    0% {
-      opacity: 0;
-    }
-    100% {
-      opacity: 1;
-    }
-  }
+    margin-left: 1rem;
+}
+
+.inner-progress {
+  position: absolute;
+  left: 0;
+  top: 0;
+  height: 100%;
+  background: red;
+  text-align: right;
+}
