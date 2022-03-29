@@ -78,30 +78,6 @@
         }
     </style>
     <style media="screen">
-        @media (max-width:480px) {
-
-            /* Force table to not be like tables anymore */
-            table,
-            thead,
-            tbody,
-            th,
-            td,
-            tr {
-                display: block;
-            }
-
-            tr td {
-                text-align: center;
-                border-bottom: 1px solid #ccc;
-                border-left: 1px solid #ccc;
-                border-right: 1px solid #ccc;
-            }
-
-            tr td:last-child {
-                border-bottom: 3px solid #333;
-            }
-        }
-
         a:link {
             text-decoration: none;
         }
@@ -114,9 +90,21 @@
             margin: 100px;
         }
 
+        table {
+            border-collapse: collapse;
+            border-spacing: 0;
+            width: 100%;
+            border: 1px solid #ddd;
+        }
+
         th,
         td {
-            padding: 65px;
+            text-align: left;
+            padding: 8px;
+        }
+
+        tr:nth-child(even) {
+            background-color: #f2f2f2
         }
 
         header {
