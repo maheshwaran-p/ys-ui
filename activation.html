@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <script src="https://kit.fontawesome.com/dfbb4486c2.js" crossorigin="anonymous"></script>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title></title>
+    <link rel="stylesheet" href="css/login.css" />
+    <script src="js/login.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <style>
+        .input-icons i {
+            position: absolute;
+        }
+
+        .input-icons {
+            width: 100%;
+            /* //   margin-bottom: 10px; */
+        }
+
+        .icon {
+            padding: 20px;
+            color: #42b72a;
+            min-width: 70px;
+            width: 70px;
+
+        }
+
+        .f-right {
+            float: right;
+        }
+
+        .input-field {
+            width: 100%;
+            padding: 10px;
+            text-align: center;
+        }
+
+        h2 {
+            color: green;
+        }
+
+        .input-field .suffix {
+            position: absolute;
+            width: 3rem;
+            font-size: 2rem;
+            transition: color .2s;
+            right: 0px;
+        }
+
+        .input-field .suffix~input {
+            margin-right: 3rem;
+            width: 84%;
+            width: calc(100% - 6rem);
+        }
+    </style>
+
+</head>
+
+<body>
+    <div class="tag" align="center" style="margin-top: 84px; font-weight: bold;">
+        Reset your username and password to the Lingo Mastery
+    </div>
+    <main>
+        <div class="colm-form">
+            <div class="form-container">
+                <div style="margin: 8px;" class="tag">
+                    Reset Username and Password By registered mailId
+                </div>
+
+                <div class="input-icons">
+                    <i style="margin:20px; margin-left: 30px; color: #42b72a;" class="fa-regular fa-envelope"></i>
+                    <input class="inp" type="text" value="" id="email" placeholder="Email address" required>
+                </div>
+                <div class="input-icons">
+                    <i style="margin:20px; margin-left: 29px; color: #42b72a;" class="fa-regular fa-user"></i>
+                    <input id="username" class="inp" value="" type="text" placeholder="username" />
+                </div>
+                <div class="input-icons">
+                    <i class="fa fa-key icon">
+                    </i>
+
+
+                    <input id="password" class="inp" value="" type="password" placeholder="Password" />
+
+                </div>
+                <div>
+                    <input style="margin: 14px; padding: 35px; font-size: 15px;" type="checkbox" onclick="visibility()">
+                    Show
+                    Password
+                </div>
+
+                <button onclick="reset()" class="btn-login">Reset</button>
+
+
+
+                <div id="snackbar">Email not Found . Seems no account with this Email</div>
+                <div id="snackbar2">All fields are required</div>
+            </div>
+        </div>
+    </main>
+
+
+
+    <script>
+        function visibility() {
+            var x = document.getElementById("password");
+            if (x.type === "password") {
+                x.type = "text";
+            } else {
+                x.type = "password";
+            }
+        }
+
+        async function reset() {
+
+            console.log('hii');
+
+            var email = document.getElementById('email').value;
+
+            var user = document.getElementById('username').value;
+            var password = document.getElementById('password').value;
+
+            if (email != '' && user != '' && password != '') {
+
+                await fetch("http://localhost:4000/student/reset", {
+                    method: "POST",
+                    body: JSON.stringify({
+
+                        email: document.getElementById('email').value,
+
+                        username: document.getElementById('username').value,
+
+                        password: document.getElementById('password').value,
+
+                    }),
+
+                    headers: {
+                        "Content-type": "application/json; charset=UTF-8"
+                    }
+                })
+                    .then(response => response.json())
+                    .then(json => {
+                        alert("Hello! your username and password Updated . You can use your new username and password ");
+                        window.location.href = "./index.html";
+                        console.log(json);
+
+                    }).catch(function (error) {
+                        var x = document.getElementById("snackbar");
+                        x.className = "show";
+                        setTimeout(function () { x.className = x.className.replace("show", ""); }, 3000);
+                    });
+
+            }
+
+            else {
+                var x = document.getElementById("snackbar2");
+                x.className = "show";
+                setTimeout(function () { x.className = x.className.replace("show", ""); }, 3000);
+            }
+
+
+
+
+
+
+        }
+
+
+
+
+    </script>
+</body>
+
+</html>

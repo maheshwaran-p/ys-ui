@@ -235,6 +235,7 @@
 
             if (pair[1] == "undefined") {
 
+                alert("Hello! your session Expired . Please login to access this platform .");
                 window.location.href = "./index.html";
 
 
@@ -276,7 +277,7 @@
             window.location.href = "./leaderboard.html?username=" + pair[1];
         }
 
-        async function studentnote() {
+        function studentnote() {
 
             let urlString =
                 window.location.href;
@@ -290,6 +291,7 @@
 
 
             if (pair[1] == "undefined") {
+                alert("Hello! your session Expired . Please login to access this platform .");
                 window.location.href = "./index.html";
             }
             else {

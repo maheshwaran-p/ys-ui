@@ -2,6 +2,7 @@
 <html lang="en">
 
 <head>
+    <script src="https://kit.fontawesome.com/dfbb4486c2.js" crossorigin="anonymous"></script>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -12,20 +13,97 @@
 
     <link rel="stylesheet" href="css/login.css">
     <script src="js/register.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <style>
+        .input-icons i {
+            position: absolute;
+        }
+
+        .input-icons {
+            width: 100%;
+            /* //   margin-bottom: 10px; */
+        }
+
+        .icon {
+            padding: 20px;
+            color: #42b72a;
+            min-width: 70px;
+            width: 70px;
+
+        }
+
+        .f-right {
+            float: right;
+        }
+
+        .input-field {
+            width: 100%;
+            padding: 10px;
+            text-align: center;
+        }
+
+        h2 {
+            color: green;
+        }
+
+        .input-field .suffix {
+            position: absolute;
+            width: 3rem;
+            font-size: 2rem;
+            transition: color .2s;
+            right: 0px;
+        }
+
+        .input-field .suffix~input {
+            margin-right: 3rem;
+            width: 84%;
+            width: calc(100% - 6rem);
+        }
+    </style>
+
 </head>
 
 <body>
+    <div class="tag" align="center" style="margin-top: 65px; font-weight: bold;">
+        Welcome to Lingo Mastery
+    </div>
     <main>
         <div class="colm-form">
             <div class="form-container">
                 <div class="tag">
                     Student Register
                 </div>
-                <input class="inp" type="text" value="" id="firstName" placeholder="First Name" required>
-                <input class="inp" type="text" value="" id="lastName" placeholder="Last Name" required>
-                <input class="inp" type="text" value="" id="username" placeholder="User Name" required>
-                <input class="inp" type="text" value="" id="email" placeholder="Email address" required>
-                <input class="inp" type="password" value="" id="password" placeholder="Password" required>
+                <div class="input-icons">
+                    <i style="margin:20px; margin-left: 30px; color: #42b72a;"
+                        class="fa-regular fa-square-caret-left"></i>
+
+                    <input class="inp" type="text" value="" id="firstName" placeholder="First Name" required>
+                </div>
+                <div class="input-icons">
+                    <i style="margin:20px; margin-left: 30px; color: #42b72a ;"
+                        class="fa-regular fa-square-caret-right"></i>
+                    <input class="inp" type="text" value="" id="lastName" placeholder="Last Name" required>
+                </div>
+                <div class="input-icons">
+                    <i style="margin:20px; margin-left: 30px; color: #42b72a;" class="fa-regular fa-user"></i>
+                    <input class="inp" type="text" value="" id="username" placeholder="User Name" required>
+                </div>
+                <div class="input-icons">
+                    <i style="margin:20px; margin-left: 30px; color: #42b72a;" class="fa-regular fa-envelope"></i>
+                    <input class="inp" type="text" value="" id="email" placeholder="Email address" required>
+                </div>
+                <div class="input-icons">
+                    <i class="fa fa-key icon">
+                    </i>
+                    <input class="inp" type="password" value="" id="password" placeholder="Password" required>
+                </div>
+                <div>
+                    <input style="margin: 14px; padding: 35px; font-size: 15px;" type="checkbox" onclick="visibility()">
+                    Show
+                    Password
+                </div>
+
+
                 <button class="btn-login" onclick="create()">Register</button>
                 <!-- <a href="#">Forgotten password?</a> -->
                 <button class="btn-new" onclick="login()">Login</button>
@@ -38,6 +116,14 @@
         </div>
     </main>
     <script>
+        function visibility() {
+            var x = document.getElementById("password");
+            if (x.type === "password") {
+                x.type = "text";
+            } else {
+                x.type = "password";
+            }
+        }
 
         function create() {
 

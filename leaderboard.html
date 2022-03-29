@@ -193,7 +193,7 @@
 <body>
     <div class="card one">
         <div class="header">
-            <i class="arrow fas fa-chevron-left"></i>
+            <i class="arrow fas fa-chevron-left" onclick="dashboard()"></i>
             <h3 class="title">Leaderboard</h3>
             <div></div>
         </div>
@@ -232,6 +232,28 @@
         </div>
 
         <script>
+
+            function dashboard() {
+                let urlString =
+                    window.location.href;
+                let paramString = urlString.split('?')[1];
+                let queryString = new URLSearchParams(paramString);
+                let pair = []
+                for (pair of queryString.entries()) {
+                    console.log("Key is:" + pair[0]);
+                    console.log("Value is:" + pair[1]);
+                }
+
+
+                if (pair[1] == "undefined") {
+                    alert("Hello! your session Expired . Please login to access this platform .");
+                    window.location.href = "./index.html";
+                }
+                else {
+                    window.location.href = "./student.html?username=" + pair[1];
+                }
+
+            }
             window.onload = tabledata();
 
 
@@ -247,12 +269,12 @@
                     document.getElementById("fsum").innerHTML = obj[0].sum;
                     document.getElementById("second").innerHTML = "@" + obj[1].student_username;
                     document.getElementById("ssum").innerHTML = obj[1].sum;
-                    document.getElementById("third").innerHTML = "@" + obj[0].student_username;
-                    document.getElementById("tsum").innerHTML = obj[0].sum;
+                    document.getElementById("third").innerHTML = "@" + obj[2].student_username;
+                    document.getElementById("tsum").innerHTML = obj[2].sum;
 
 
                     let vr = [];
-                    for (var i = 0; i < obj.length; i++) {
+                    for (var i = 3; i < obj.length; i++) {
 
                         var iDiv = document.getElementById('rest');
 
@@ -261,12 +283,12 @@
                         innerDiv.innerHTML = ` <div class="others flex">
                 <div class="rank">
                     <i class="fas fa-caret-up"></i>
-                    <p class="num">${i + 4}</p>
+                    <p class="num">${i + +1}</p>
                 </div>
                 <div id="fr" class="info flex">
                     <img src="" alt="" class="p_img">
-                    <p id="p3" class="link">@${obj[0].student_username}</p>
-                    <p class="points">${obj[0].sum}</p>
+                    <p id="p3" class="link">@${obj[i].student_username}</p>
+                    <p class="points">${obj[i].sum}</p>
 
                 </div>
             </div>`;

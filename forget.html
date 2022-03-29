@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <script src="https://kit.fontawesome.com/dfbb4486c2.js" crossorigin="anonymous"></script>
+    <meta charset="UTF-8" />
+    <script src="https://smtpjs.com/v3/smtp.js"></script>
+
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title></title>
+    <link rel="stylesheet" href="css/login.css" />
+    <script src="js/login.js"></script>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <style>
+        .input-icons i {
+            position: absolute;
+        }
+
+        .input-icons {
+            width: 100%;
+            /* //   margin-bottom: 10px; */
+        }
+
+        .icon {
+            padding: 20px;
+            color: #42b72a;
+            min-width: 70px;
+            width: 70px;
+
+        }
+
+        .f-right {
+            float: right;
+        }
+
+        .input-field {
+            width: 100%;
+            padding: 10px;
+            text-align: center;
+        }
+
+        h2 {
+            color: green;
+        }
+
+        .input-field .suffix {
+            position: absolute;
+            width: 3rem;
+            font-size: 2rem;
+            transition: color .2s;
+            right: 0px;
+        }
+
+        .input-field .suffix~input {
+            margin-right: 3rem;
+            width: 84%;
+            width: calc(100% - 6rem);
+        }
+    </style>
+
+</head>
+
+<body>
+    <div class="tag" align="center" style="margin-top: 84px; font-weight: bold;">
+        Enter your registered mail to the Lingo Mastery
+    </div>
+    <main>
+        <div class="colm-form">
+            <div class="form-container">
+                <div style="margin: 20px;" class="tag">
+                    Help in Login
+                </div>
+                <div class="input-icons">
+                    <i style="margin:20px; margin-left: 30px; color: #42b72a;" class="fa-regular fa-envelope"></i>
+                    <input id="mail" class="inp" value="" type="text" placeholder="Enter your mail" />
+                </div>
+
+
+
+                <button onclick="Sendmail()" class="btn-login">Send Mail</button>
+
+
+                <div id="snackbar">Mail Shouldn't be Empty</div>
+
+            </div>
+        </div>
+    </main>
+
+
+
+    <script>
+
+
+
+
+        function Sendmail() {
+            var mail = document.getElementById("mail").value;
+            if (mail == "") {
+
+                var x = document.getElementById("snackbar");
+                x.className = "show";
+                setTimeout(function () { x.className = x.className.replace("show", ""); }, 3000);
+            }
+            else {
+
+                Email.send({
+                    Host: "smtp.gmail.com",
+                    Username: "mahe.1817130@gct.ac.in",
+                    Password: "gct@1234",
+                    To: mail,
+                    From: "gctcoders@gmail.com",
+                    Subject: "activation link from Lingo Mastery",
+                    Body: `Hi , <br> Here is your activation Link .<br><br> <a href="${BASEURL}">Activation Link</a> `,
+                })
+                    .then(function (message) {
+                        alert("mail sent successfully")
+                    });
+
+            }
+        }
+
+
+
+
+
+
+
+
+    </script>
+</body>
+
+</html>

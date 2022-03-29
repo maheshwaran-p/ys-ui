@@ -2,25 +2,95 @@
 <html lang="en">
 
 <head>
+  <script src="https://kit.fontawesome.com/dfbb4486c2.js" crossorigin="anonymous"></script>
   <meta charset="UTF-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title></title>
   <link rel="stylesheet" href="css/login.css" />
   <script src="js/login.js"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <style>
+    .input-icons i {
+      position: absolute;
+    }
+
+    .input-icons {
+      width: 100%;
+      /* //   margin-bottom: 10px; */
+    }
+
+    .icon {
+      padding: 20px;
+      color: #42b72a;
+      min-width: 70px;
+      width: 70px;
+
+    }
+
+    .f-right {
+      float: right;
+    }
+
+    .input-field {
+      width: 100%;
+      padding: 10px;
+      text-align: center;
+    }
+
+    h2 {
+      color: green;
+    }
+
+    .input-field .suffix {
+      position: absolute;
+      width: 3rem;
+      font-size: 2rem;
+      transition: color .2s;
+      right: 0px;
+    }
+
+    .input-field .suffix~input {
+      margin-right: 3rem;
+      width: 84%;
+      width: calc(100% - 6rem);
+    }
+  </style>
 
 </head>
 
 <body>
+  <div class="tag" align="center" style="margin-top: 84px; font-weight: bold;">
+    Welcome to Lingo Mastery
+  </div>
   <main>
     <div class="colm-form">
       <div class="form-container">
-        <div class="tag">
+        <div style="margin: 8px;" class="tag">
           Login
         </div>
-        <input id="username" class="inp" value="" type="text" placeholder="username" />
-        <input id="password" class="inp" value="" type="password" placeholder="Password" />
+        <div class="input-icons">
+          <i style="margin:20px; margin-left: 29px; color: #42b72a;" class="fa-regular fa-user"></i>
+          <input id="username" class="inp" value="" type="text" placeholder="username" />
+        </div>
+        <div class="input-icons">
+          <i class="fa fa-key icon">
+          </i>
+
+
+          <input id="password" class="inp" value="" type="password" placeholder="Password" />
+
+        </div>
+        <div>
+          <input style="margin: 14px; padding: 35px; font-size: 15px;" type="checkbox" onclick="visibility()"> Show
+          Password
+        </div>
+        <p style="margin: 11px;  font-size: 15px;">Forgotten your login details? <span
+            style="font-size: 16px;font-weight: 500;"> <a href="./forget.html">Get Help with
+              logging
+              in.</span> </a></p>
         <button onclick="login()" class="btn-login">Login</button>
+
         <button class="btn-new" onclick="register()">
           Create new Account
         </button>
@@ -34,7 +104,14 @@
 
 
   <script>
-
+    function visibility() {
+      var x = document.getElementById("password");
+      if (x.type === "password") {
+        x.type = "text";
+      } else {
+        x.type = "password";
+      }
+    }
 
     async function login() {
 
