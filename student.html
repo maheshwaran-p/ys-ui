@@ -78,6 +78,30 @@
         }
     </style>
     <style media="screen">
+        @media (max-width:480px) {
+
+            /* Force table to not be like tables anymore */
+            table,
+            thead,
+            tbody,
+            th,
+            td,
+            tr {
+                display: block;
+            }
+
+            tr td {
+                text-align: center;
+                border-bottom: 1px solid #ccc;
+                border-left: 1px solid #ccc;
+                border-right: 1px solid #ccc;
+            }
+
+            tr td:last-child {
+                border-bottom: 3px solid #333;
+            }
+        }
+
         a:link {
             text-decoration: none;
         }
@@ -253,7 +277,11 @@
 
 
                         window.location.href = "./graph.html?username=" + pair[1] + "&id=" + json.id;
-                    });
+                    }).catch(function (error) {
+
+                        alert("Hello! your session Expired . Please login to access this platform .");
+                        window.location.href = "./index.html";
+                    })
 
 
 
