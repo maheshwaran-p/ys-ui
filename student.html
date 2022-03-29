@@ -2,7 +2,7 @@
 <html lang="en">
 
 <head>
-
+    <script src="https://kit.fontawesome.com/dfbb4486c2.js" crossorigin="anonymous"></script>
     <meta charset=UTF-8>
     <script src="js/register.js"></script>
     <script src="js/login.js"></script>
@@ -42,7 +42,7 @@
         }
 
         .bg-c-pink {
-            background: #663a30;
+            background: #b820b1;
         }
 
 
@@ -164,11 +164,11 @@
                 </div>
             </div>
             <div onclick="studentnote()" class="col-md-4 col-xl-6">
-                <div class="card bg-c-blue order-card">
+                <div class="card bg-c-yellow order-card">
                     <div class="card-block">
                         <h6 class="m-b-20"> <a style="text-decoration: none;color:white;">Get
                                 Notes</a> </h6>
-                        <h2 class="text-right"><i class="fas fa-plus f-left"></i></h2>
+                        <h2 class="text-right"><i class="fa-solid fa-book f-left"></i></h2>
 
                     </div>
                 </div>
@@ -179,7 +179,7 @@
                 <div class="card bg-c-blue order-card">
                     <div class="card-block">
                         <h6 class="m-b-20"> <a style="text-decoration: none;color:white;">Progress</a> </h6>
-                        <h2 class="text-right"><i class="fas fa-plus f-left"></i></h2>
+                        <h2 class="text-right"><i class="fa-solid fa-chart-line f-left"></i></h2>
 
                     </div>
                 </div>
@@ -187,10 +187,10 @@
 
 
             <div onclick="leaderboard()" class="col-md-4 col-xl-6">
-                <div class="card bg-c-blue order-card">
+                <div class="card bg-c-pink order-card">
                     <div class="card-block">
                         <h6 class="m-b-20"> <a style="text-decoration: none;color:white;">Leader Board</a> </h6>
-                        <h2 class="text-right"><i class="fas fa-plus f-left"></i></h2>
+                        <h2 class="text-right"><i class="fa-solid fa-trophy f-left"></i></h2>
 
                     </div>
                 </div>
@@ -233,7 +233,7 @@
             console.log("username from url: " + pair[1]);
 
 
-            if (pair[1] == undefined) {
+            if (pair[1] == "undefined") {
 
                 window.location.href = "./index.html";
 
@@ -288,8 +288,13 @@
                 console.log("Value is:" + pair[1]);
             }
 
-            window.location.href = "./student-note.html?username=" + pair[1];
 
+            if (pair[1] == "undefined") {
+                window.location.href = "./index.html";
+            }
+            else {
+                window.location.href = "./student-note.html?username=" + pair[1];
+            }
         }
 
 

@@ -184,6 +184,7 @@
 </style>
 
 <head>
+    <script src="https://kit.fontawesome.com/dfbb4486c2.js" crossorigin="anonymous"></script>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -205,13 +206,13 @@
             <div class="person second">
                 <div class="num">2</div>
                 <i class="fas fa-caret-up"></i>
-                <img src="https://image.flaticon.com/icons/png/512/949/949666.png" alt="" class="photo">
+                <img src="" alt="" class="photo">
                 <p id="second" class="link"></p>
                 <p id="ssum" class="points"></p>
             </div>
 
             <div class="person first">
-                <img width="20px" height="30px" src="./assets/crawn-removebg-preview.png">
+                <!-- <img width="20px" height="30px" src="./assets/crawn-removebg-preview.png"> -->
                 <div class="num">1</div>
                 <i class="fas fa-crown"></i>
                 <img src="" alt="" class="photo main">
@@ -221,23 +222,13 @@
             <div class="person third">
                 <div class="num">3</div>
                 <i class="fas fa-caret-up"></i>
-                <img src="https://image.flaticon.com/icons/png/512/4333/4333609.png" alt="" class="photo">
+                <img src="" alt="" class="photo">
                 <p id="third" class="link"></p>
                 <p id="tsum" class="points"></p>
             </div>
         </div>
-        <div class="rest">
-            <div class="others flex">
-                <div class="rank">
-                    <i class="fas fa-caret-up"></i>
-                    <p class="num">4</p>
-                </div>
-                <div id="fr" class="info flex">
-                    <img src="https://image.flaticon.com/icons/png/512/2922/2922510.png" alt="" class="p_img">
-                    <p class="link"></p>
-                    <p class="points">7861</p>
-                </div>
-            </div>
+        <div id="rest" class="rest">
+
         </div>
 
         <script>
@@ -260,19 +251,26 @@
                     document.getElementById("tsum").innerHTML = obj[0].sum;
 
 
-
+                    let vr = [];
                     for (var i = 0; i < obj.length; i++) {
 
+                        var iDiv = document.getElementById('rest');
 
+                        var innerDiv = document.createElement('div');
+                        innerDiv.className = 'block-2';
+                        innerDiv.innerHTML = ` <div class="others flex">
+                <div class="rank">
+                    <i class="fas fa-caret-up"></i>
+                    <p class="num">${i + 4}</p>
+                </div>
+                <div id="fr" class="info flex">
+                    <img src="" alt="" class="p_img">
+                    <p id="p3" class="link">@${obj[0].student_username}</p>
+                    <p class="points">${obj[0].sum}</p>
 
-                        var iiDiv = document.createElement('p');
-
-                        //iidiv.innerHTML = obj[0].student_username;
-
-                        var s = document.getElementById('fr');
-                        s.appendChild(iiDiv);
-
-
+                </div>
+            </div>`;
+                        iDiv.appendChild(innerDiv);
                     }
 
 
