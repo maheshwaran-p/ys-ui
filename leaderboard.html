@@ -124,11 +124,11 @@
     }
 
     .second {
-        margin-right: -0.7rem !important;
+        margin-right: -0.0rem !important;
     }
 
     .third {
-        margin-left: -0.7rem !important;
+        margin-left: -0.0rem !important;
     }
 
     .p_img {
@@ -206,7 +206,7 @@
             <div class="person second">
                 <div class="num">2</div>
                 <i class="fas fa-caret-up"></i>
-                <img src="" alt="" class="photo">
+
                 <p id="second" class="link"></p>
                 <p id="ssum" class="points"></p>
             </div>
@@ -215,14 +215,14 @@
                 <!-- <img width="20px" height="30px" src="./assets/crawn-removebg-preview.png"> -->
                 <div class="num">1</div>
                 <i class="fas fa-crown"></i>
-                <img src="" alt="" class="photo main">
+                <!-- <img src="" alt="" class="photo main"> -->
                 <p id="first" class="link"></p>
                 <p id="fsum" class="points"></p>
             </div>
             <div class="person third">
                 <div class="num">3</div>
                 <i class="fas fa-caret-up"></i>
-                <img src="" alt="" class="photo">
+                <!-- <img src="" alt="" class="photo"> -->
                 <p id="third" class="link"></p>
                 <p id="tsum" class="points"></p>
             </div>
@@ -269,8 +269,8 @@
                     document.getElementById("fsum").innerHTML = obj[0].sum;
                     document.getElementById("second").innerHTML = "@" + obj[1].student_username;
                     document.getElementById("ssum").innerHTML = obj[1].sum;
-                    document.getElementById("third").innerHTML = "@" + obj[2].student_username;
-                    document.getElementById("tsum").innerHTML = obj[2].sum;
+                    document.getElementById("third").innerHTML = "@" + obj[0].student_username;
+                    document.getElementById("tsum").innerHTML = obj[0].sum;
 
 
                     let vr = [];
@@ -286,7 +286,7 @@
                     <p class="num">${i + +1}</p>
                 </div>
                 <div id="fr" class="info flex">
-                    <img src="" alt="" class="p_img">
+                 
                     <p id="p3" class="link">@${obj[i].student_username}</p>
                     <p class="points">${obj[i].sum}</p>
 

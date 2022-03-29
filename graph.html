@@ -19,7 +19,7 @@
         table {
             border-collapse: collapse;
             border-spacing: 0;
-            width: 100%;
+            width: 70%;
             border: 1px solid #ddd;
         }
 
@@ -30,7 +30,7 @@
         }
 
         tr:nth-child(even) {
-            background-color: #f2f2f2
+            background-color: #e9e8e8
         }
     </style>
     <link href="Content/Site.css" rel="stylesheet" type="text/css" />
@@ -362,17 +362,19 @@
 
     <div id="body">
 
-        <h1 id="progress"></h1>
-        <div id="dvTable" style="margin-left: 115px;">
+        <h1 align="center" style="margin: 30px; font-weight: 500; font-family: Arial, Helvetica, sans-serif;"
+            id="progress"></h1>
+        <div id="dvTable" align="center">
 
 
 
 
         </div>
-        <section align="center" class="featured">
+
+        <section style="margin-top: 120px;" align="center" class="featured">
             <div align="center" class="content-wrapper">
                 <hgroup align="center" class="title">
-                    <h1 id="progress"></h1>
+                    <h1 id="progress" style="color: bisque; "></h1>
                 </hgroup>
                 <p>
 
@@ -380,17 +382,17 @@
             </div>
         </section>
         <section align="center" class="content-wrapper main-content clear-fix">
-            <canvas id="bchart" height="400" width="600">
+            <canvas id="bchart" height="330" style="width: 50%; align-items: center;">
                 Your browser does not support HTML5 Canvas </canvas>
         </section>
     </div>
 
 
     <style>
-        body {
-            background-color: #f2f2f2;
-            /* background: linear-gradient(110deg, #ffed4b 60%, #fdcd3b 60%); */
-        }
+        /* body {
+            background-color: #d1ddf8;
+            background: linear-gradient(110deg, #ffed4b 60%, #fdcd3b 60%); 
+       } */
     </style>
     <script>
 
@@ -405,6 +407,7 @@
             url.push(pair[1]);
 
             document.getElementById("progress").innerHTML = url[0] + "'s Progress";
+            document.getElementById("progress").style.color = "#d31985";
 
         }
 
