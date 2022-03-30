@@ -37,6 +37,174 @@
             <a onclick="newcours()" class="logout_bt">Add New Course</a>
         </div>
     </header>
+    <style type="text/css">
+        a:link {
+            text-decoration: none;
+        }
+
+        .order-card {
+            color: rgb(255, 255, 255);
+        }
+
+        .bg-c-blue {
+            background: #04868f;
+        }
+
+        .bg-c-green {
+            background: #4C51BF;
+        }
+
+        .bg-c-yellow {
+            background: #F56565;
+        }
+
+        .bg-c-pink {
+            background: #b820b1;
+        }
+
+
+        .card {
+
+            -webkit-box-shadow: 0 1px 2.94px 0.06px rgba(4, 26, 55, 0.16);
+            box-shadow: 0 1px 2.94px 0.06px rgba(4, 26, 55, 0.16);
+            border: 1px solid black;
+            margin-bottom: 10px;
+            -webkit-transition: all 0.3s ease-in-out;
+            transition: all 0.3s ease-in-out;
+        }
+
+        .card .card-block {
+            padding: 25px;
+            /* margin-top: 10px; */
+        }
+
+        .order-card i {
+            font-size: 27px;
+        }
+
+        .f-left {
+            float: left;
+        }
+
+        .f-right {
+            float: right;
+        }
+
+        header {
+            left: 0px;
+            right: 0px;
+        }
+    </style>
+    <style media="screen">
+        a:link {
+            text-decoration: none;
+        }
+
+        h6 {
+            text-align: center;
+        }
+
+        @media screen and (min-width: 480px) {
+            .row {
+                margin: 100px;
+            }
+        }
+
+        @media screen and (max-width: 480px) {
+            .row {
+                margin-top: 120px;
+                margin-bottom: 10px;
+            }
+        }
+
+        @media screen and (min-width: 480px) {
+            table {
+                border-collapse: collapse;
+                border-spacing: 0;
+                width: 74%;
+                border: 1px solid #ddd;
+            }
+        }
+
+        @media screen and (max-width: 480px) {
+            table {
+                border-collapse: collapse;
+                border-spacing: 0;
+                width: 96%;
+                border: 1px solid #ddd;
+            }
+
+            #total {
+
+                width: 92%;
+                align-items: center;
+                margin-left: 4%;
+                margin-right: 4%;
+
+            }
+
+            #btn1 {
+                width: 92%;
+                align-items: center;
+                margin-left: 4%;
+                margin-right: 4%;
+
+
+            }
+
+        }
+
+        th,
+        td {
+            text-align: center;
+            padding: 8px;
+        }
+
+        tr:nth-child(even) {
+            background-color: #f2f2f2
+        }
+
+        header {
+            position: fixed;
+            background: #22242A;
+            padding: 16px;
+            width: 100%;
+            z-index: 1;
+        }
+
+        .left_area h3 {
+            color: #fff;
+            margin: 0px;
+            text-transform: uppercase;
+            font-size: 22px;
+            font-weight: 900;
+        }
+
+        .left_area span {
+            color: #19B3D3;
+        }
+
+        .logout_btn {
+            padding: 5px;
+            background: #19B3D3;
+            text-decoration: none;
+            float: right;
+            /* margin-top: -30px; */
+            /* margin-right: 40px; */
+            border-radius: 2px;
+            font-size: 15px;
+            font-weight: 600;
+            color: #fff;
+            transition: 0.5s;
+
+        }
+
+        .logout_btn:hover {
+            background: #0B87A6;
+        }
+    </style>
+
+
 </head>
 
 <body>
@@ -71,7 +239,7 @@
 
 
             <div class="col-md-4 col-xl-6" onclick="">
-                <div class="card bg-c-blue order-card">
+                <div class="card bg-c-yellow order-card">
                     <div class="card-block">
                         <h6 class="m-b-20"> <a style="text-decoration: none;color:white;">
 
@@ -87,7 +255,7 @@
     </div>
     </div>
 
-    <div id="dvTable" align="center">
+    <div id="dvTable" align="center" style="margin-bottom: 120px;">
 
 
 
@@ -96,11 +264,11 @@
     </div>
 
 
-    <br><br> <br><br>
+    <br><br>
     <input type="text" id="total" name="total" value="" placeholder="Tatal Mark for this Course" required>
     <br><br> <br>
 
-    <input align="center" type="button" class="button" onclick="mark1()" value="Update Marks">
+    <input align="center" id="btn1" type="button" class="button" onclick="mark1()" value="Update Marks">
     <div id="snackbar">Total Mark is required</div>
 
 
