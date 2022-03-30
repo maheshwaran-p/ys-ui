@@ -99,7 +99,7 @@
         table {
             border-collapse: collapse;
             border-spacing: 0;
-            width: 100%;
+            width: 70%;
             border: 1px solid #ddd;
         }
 
@@ -394,6 +394,10 @@
                 for (var i = 0; i < columnCount; i++) {
                     var headerCell = document.createElement("TH");
                     headerCell.innerHTML = arr1[0][i];
+                    headerCell.style.color = "black";
+                    headerCell.style.textAlign = 'center';
+                    headerCell.style.fontWeight = "bold";
+                    headerCell.style.fontSize = "17px"
                     row.appendChild(headerCell);
                 }
 
@@ -402,7 +406,9 @@
                     row = table.insertRow(-1);
                     for (var j = 0; j < columnCount; j++) {
                         var cell = row.insertCell(-1);
+
                         cell.innerHTML = arr1[i][j];
+                        cell.style.textAlign = 'center';
                     }
                 }
 
