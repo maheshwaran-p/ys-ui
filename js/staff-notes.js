@@ -1,5 +1,5 @@
 
-
+BASEURL = 'http://3.108.62.191:4000';
 
 async function addnotes() {
 
@@ -10,7 +10,7 @@ async function addnotes() {
     console.log(link);
     if (title != '' && description != '' && link != '') {
         console.log('hii');
-        await fetch("http://localhost:4000/addnote", {
+        await fetch(BASEURL + "/addnote", {
             method: "POST",
             body: JSON.stringify({
                 title: document.getElementById('title').value,

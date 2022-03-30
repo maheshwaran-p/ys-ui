@@ -214,7 +214,7 @@
         }
 
         async function tabledata() {
-            await fetch('http://localhost:4000/addnote/response').then(function (response) {
+            await fetch(BASEURL + '/addnote/response').then(function (response) {
                 return response.json();
 
             }).then(function (obj) {

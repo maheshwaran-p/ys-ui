@@ -1,5 +1,7 @@
 
 
+
+BASEURL = 'http://3.108.62.191:4000';
 async function postMarks(courseId, jsonArray) {
 
 
@@ -8,7 +10,7 @@ async function postMarks(courseId, jsonArray) {
 
 
 
-    await fetch("http://localhost:4000/marks", {
+    await fetch(BASEURL + "/marks", {
         method: "POST",
         body: JSON.stringify({
             addcourseId: courseId,
@@ -28,7 +30,7 @@ async function postMarks(courseId, jsonArray) {
 
 
 
-    await fetch("http://localhost:4000/addcourse/total/" + courseId, {
+    await fetch(BASEURL + "/addcourse/total/" + courseId, {
         method: "POST",
         body: JSON.stringify({
 

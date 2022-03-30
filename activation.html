@@ -2,6 +2,7 @@
 <html lang="en">
 
 <head>
+    <script src="js/login.js"></script>
     <script src="https://kit.fontawesome.com/dfbb4486c2.js" crossorigin="anonymous"></script>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -125,7 +126,7 @@
 
             if (email != '' && user != '' && password != '') {
 
-                await fetch("http://localhost:4000/student/reset", {
+                await fetch(BASEURL + "/student/reset", {
                     method: "POST",
                     body: JSON.stringify({
 

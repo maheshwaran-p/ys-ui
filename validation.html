@@ -5,6 +5,7 @@
 
     <meta charset=UTF-8>
     <script src="js/register.js"></script>
+    <script src="js/login.js"></script>
     <script src="js/staff.js"></script>
 
     <title>Validate</title>
@@ -231,7 +232,7 @@
         }
 
 
-        fetch('http://localhost:4000/addcourse/response').then(function (response) {
+        fetch(BASEURL + '/addcourse/response').then(function (response) {
             return response.json();
 
         }).then(function (obj) {

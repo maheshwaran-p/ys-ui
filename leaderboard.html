@@ -184,6 +184,7 @@
 </style>
 
 <head>
+    <script src="js/login.js"></script>
     <script src="https://kit.fontawesome.com/dfbb4486c2.js" crossorigin="anonymous"></script>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -259,7 +260,7 @@
 
             async function tabledata() {
 
-                await fetch('http://localhost:4000/marks/leader').then(function (response) {
+                await fetch(BASEURL + '/marks/leader').then(function (response) {
                     return response.json();
 
                 }).then(function (obj) {

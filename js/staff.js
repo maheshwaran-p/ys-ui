@@ -1,6 +1,6 @@
 
 
-
+BASEURL = 'http://3.108.62.191:4000';
 async function getCourse(id) {
     console.log("ID")
     console.log(id)
@@ -31,7 +31,7 @@ async function getCourse(id) {
 
 
 
-        await fetch("http://localhost:4000/addcourse/validate/" + id, {
+        await fetch(BASEURL + "/addcourse/validate/" + id, {
             method: "GET",
             // body: JSON.stringify({
             //     title: document.getElementById('title').value,
@@ -63,7 +63,7 @@ async function deleteCourse(id) {
         console.log(id + 50)
 
 
-        await fetch("http://localhost:4000/addcourse/delete/" + id, {
+        await fetch(BASEURL + "/addcourse/delete/" + id, {
             method: "GET",
             // body: JSON.stringify({
             //     title: document.getElementById('title').value,
@@ -103,7 +103,7 @@ async function addcourse() {
 
         console.log('hii');
 
-        await fetch("http://localhost:4000/addcourse", {
+        await fetch(BASEURL + "/addcourse", {
             method: "POST",
             body: JSON.stringify({
                 title: document.getElementById('title').value,

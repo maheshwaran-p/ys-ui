@@ -2,6 +2,8 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 
 <head>
+
+    <script src="js/login.js"></script>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <style>
         a:link {
@@ -62,7 +64,7 @@
             }
 
 
-            await fetch("http://localhost:4000/marks/percentage/" + pair[1], {
+            await fetch(BASEURL + "/marks/percentage/" + pair[1], {
                 method: "GET",
                 // body: JSON.stringify({
                 //     title: document.getElementById('title').value,

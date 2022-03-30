@@ -2,6 +2,7 @@
 <html lang="en">
 
 <head>
+    <script src="js/login.js"></script>
 
     <meta charset=UTF-8>
     <script src="js/register.js"></script>
@@ -237,7 +238,7 @@
 
         async function tabledata() {
 
-            await fetch('http://localhost:4000/addcourse/response').then(function (response) {
+            await fetch(BASEURL + '/addcourse/response').then(function (response) {
                 return response.json();
 
             }).then(function (obj) {

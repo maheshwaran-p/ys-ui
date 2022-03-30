@@ -1,3 +1,5 @@
+
+BASEURL = 'http://3.108.62.191:4000';
 function login() {
 
     window.location.href = "./index.html";
@@ -9,7 +11,7 @@ async function createstudent() {
 
     console.log(document.getElementById('firstName').value);
 
-    await fetch("http://localhost:4000/student", {
+    await fetch(BASEURL + "/student", {
         method: "POST",
         body: JSON.stringify({
             firstName: document.getElementById('firstName').value,
@@ -51,7 +53,7 @@ async function createstaff() {
 
     console.log(document.getElementById('firstName').value);
 
-    await fetch("http://localhost:4000/staff", {
+    await fetch(BASEURL + "/staff", {
         method: "POST",
         body: JSON.stringify({
             firstName: document.getElementById('firstName').value,
@@ -70,17 +72,12 @@ async function createstaff() {
             console.log(json)
             console.log(json.firstName);
             console.log(json.user);
-            if (json.user != null) {
-                window.location.href = "./staff-base.html";
 
-            }
-            else {
+            window.location.href = "./staff-base.html";
 
-                var x = document.getElementById("alreadytaken");
-                x.className = "show";
-                setTimeout(function () { x.className = x.className.replace("show", ""); }, 3000);
 
-            }
+
+
 
 
         });
