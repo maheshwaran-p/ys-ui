@@ -52,7 +52,7 @@
             -webkit-box-shadow: 0 1px 2.94px 0.06px rgba(4, 26, 55, 0.16);
             box-shadow: 0 1px 2.94px 0.06px rgba(4, 26, 55, 0.16);
             border: 1px solid black;
-            margin-bottom: 1px;
+            margin-bottom: 10px;
             -webkit-transition: all 0.3s ease-in-out;
             transition: all 0.3s ease-in-out;
         }
@@ -87,14 +87,44 @@
             text-align: center;
         }
 
-        .row {
-            margin: 100px;
+        @media screen and (min-width: 480px) {
+            .row {
+                margin: 100px;
+            }
+        }
+
+        @media screen and (max-width: 480px) {
+            .row {
+                margin-top: 120px;
+                margin-bottom: 70px;
+            }
+        }
+
+        @media screen and (min-width: 480px) {
+            table {
+                border-collapse: collapse;
+                border-spacing: 0;
+                width: 74%;
+                border: 1px solid #ddd;
+            }
+        }
+
+        @media screen and (max-width: 480px) {
+            table {
+                border-collapse: collapse;
+                border-spacing: 0;
+                width: 96%;
+                border: 1px solid #ddd;
+            }
+
         }
 
         th,
         td {
-            padding: 65px;
+            text-align: center;
+            padding: 8px;
         }
+
 
         header {
             position: fixed;
@@ -178,7 +208,7 @@
             </div>
 
             <div class="col-md-4 col-xl-6" onclick="validation()">
-                <div class="card bg-c-blue order-card">
+                <div class="card bg-c-yellow order-card">
                     <div class="card-block">
                         <h6 class="m-b-20"> <a style="text-decoration: none;color:white;">
 

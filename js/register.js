@@ -73,10 +73,17 @@ async function createstaff() {
             console.log(json.firstName);
             console.log(json.user);
 
-            window.location.href = "./staff-base.html";
+            if (json.user != null) {
+                window.location.href = "./student.html";
 
+            }
+            else {
 
+                var x = document.getElementById("alreadytaken");
+                x.className = "show";
+                setTimeout(function () { x.className = x.className.replace("show", ""); }, 3000);
 
+            }
 
 
 
