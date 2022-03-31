@@ -1,3 +1,6 @@
+
+
+BASEURL = 'http://65.1.65.90:4000';
 function login() {
 
     window.location.href = "./index.html";
