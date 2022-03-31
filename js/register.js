@@ -1,5 +1,3 @@
-
-BASEURL = 'http://3.108.62.191:4000';
 function login() {
 
     window.location.href = "./index.html";
@@ -27,11 +25,11 @@ async function createstudent() {
     })
         .then(response => response.json())
         .then(json => {
-            console.log(json)
+            console.log(json);
 
-            // console.log(json.firstName);
-            // console.log(json.user);
-            if (json != null) {
+            console.log(json.firstName);
+            console.log(json.user);
+            if (json.user != null) {
                 window.location.href = "./student.html";
 
             }
@@ -69,12 +67,11 @@ async function createstaff() {
     })
         .then(response => response.json())
         .then(json => {
-            console.log(json.statusCode);
-            // console.log(json.firstName);
-            // console.log(json.user);
-
-            if (json.statusCode != 500) {
-                window.location.href = "./staff.html";
+            console.log(json)
+            console.log(json.firstName);
+            console.log(json.user);
+            if (json.user != null) {
+                window.location.href = "./staff-base.html";
 
             }
             else {
@@ -84,7 +81,6 @@ async function createstaff() {
                 setTimeout(function () { x.className = x.className.replace("show", ""); }, 3000);
 
             }
-
 
 
         });
