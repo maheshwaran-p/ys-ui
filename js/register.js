@@ -29,9 +29,9 @@ async function createstudent() {
         .then(json => {
             console.log(json)
 
-            console.log(json.firstName);
-            console.log(json.user);
-            if (json.user != null) {
+            // console.log(json.firstName);
+            // console.log(json.user);
+            if (json != null) {
                 window.location.href = "./student.html";
 
             }
@@ -69,12 +69,12 @@ async function createstaff() {
     })
         .then(response => response.json())
         .then(json => {
-            console.log(json)
-            console.log(json.firstName);
-            console.log(json.user);
+            console.log(json.statusCode);
+            // console.log(json.firstName);
+            // console.log(json.user);
 
-            if (json.user != null) {
-                window.location.href = "./student.html";
+            if (json.statusCode != 500) {
+                window.location.href = "./staff.html";
 
             }
             else {

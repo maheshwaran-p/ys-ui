@@ -23,7 +23,15 @@ async function postMarks(courseId, jsonArray) {
         }
     })
         .then(response => response.json())
-        .then(json => console.log(json));
+        .then(json => {
+            console.log(json)
+
+            var x = document.getElementById("alreadytaken");
+            x.className = "show";
+            setTimeout(function () { x.className = x.className.replace("show", ""); }, 3000);
+            window.location.href = "./marks.html";
+
+        });
 
 
     console.log('cid:' + courseId + "total" + total);
