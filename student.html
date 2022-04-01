@@ -53,6 +53,7 @@
 
 
         .card {
+            cursor: pointer;
 
             -webkit-box-shadow: 0 1px 2.94px 0.06px rgba(4, 26, 55, 0.16);
             box-shadow: 0 1px 2.94px 0.06px rgba(4, 26, 55, 0.16);
@@ -152,10 +153,12 @@
         }
 
         .left_area span {
+            cursor: pointer;
             color: #19B3D3;
         }
 
         .logout_btn {
+            cursor: pointer;
             padding: 5px;
             background: #19B3D3;
             text-decoration: none;
@@ -171,14 +174,38 @@
         }
 
         .logout_btn:hover {
+            cursor: pointer;
+            background: #0B87A6;
+        }
+
+        .logout_btn2 {
+            cursor: pointer;
+            padding: 5px;
+            background: #19B3D3;
+            text-decoration: none;
+            float: left;
+            /* margin-top: -30px; */
+            /* margin-right: 40px; */
+            border-radius: 2px;
+            font-size: 15px;
+            font-weight: 600;
+            color: #fff;
+            transition: 0.5s;
+
+        }
+
+        .logout_btn2:hover {
             background: #0B87A6;
         }
     </style>
 
     <header>
         <h5 align="center" style="color: #fff;">Student Profile</h5>
-        <div align="right" class="right_area">
+        <div align="left" class="right_area">
             <a onclick="logout()" class="logout_btn">Logout</a>
+        </div>
+        <div align="right" class="left_area">
+            <a onclick="credential()" class="logout_btn2">MyCredentials</a>
         </div>
     </header>
 </head>
@@ -252,6 +279,9 @@
 
     </div>
     <script>
+        function credential() {
+            alert("This feature is in Progress!!!. Try this some time later.");
+        }
 
         window.onload = tabledata();
 

@@ -64,6 +64,8 @@
 
 
         .card {
+            cursor: pointer;
+
 
             -webkit-box-shadow: 0 1px 2.94px 0.06px rgba(4, 26, 55, 0.16);
             box-shadow: 0 1px 2.94px 0.06px rgba(4, 26, 55, 0.16);
@@ -386,7 +388,9 @@
                 for (var i = 0; i < obj.length; i++) {
                     marksfromserver.push(obj[i].mark);
 
+
                 }
+                marksfromserver.reverse();
 
             }).catch(function (error) {
                 console.log(error);
@@ -406,7 +410,7 @@
 
 
 
-                courses.push(["Student    ", " Marks",]);
+                courses.push(["Id", "Student    ", " Marks",]);
 
                 for (var i = 0; i < obj.length; i++) {
 
@@ -438,7 +442,7 @@
                     // console.log(result3);
 
 
-                    courses.push([user])
+                    courses.push([id1, user])
 
 
 
@@ -480,8 +484,8 @@
                     for (var j = 0; j < columnCount; j++) {
                         var cell = row.insertCell(-1);
                         cell.innerHTML = arr1[i][j];
-                        if (j != 0) {
-                            cell.innerHTML = `<div><input  id="${obj[i - 1].id}" value="${marksfromserver[i - 1]}" type="number"></div>`
+                        if (j != 0 && j != 1) {
+                            cell.innerHTML = `<div><input  id="${obj[i - 1].id}" value="${marksfromserver[arr1.length - i - 1]}" type="number"></div>`
 
 
 
