@@ -34,7 +34,8 @@ async function createstudent() {
             console.log(json.firstName);
             console.log(json.user);
             if (json.user != null) {
-                window.location.href = "./student.html";
+                window.location.href = "./student.html?username=" + json.username;
+
 
             }
             else {
