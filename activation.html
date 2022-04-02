@@ -61,7 +61,7 @@
 </head>
 
 <body>
-    <div class="tag" align="center" style="margin-top: 84px; font-weight: bold;">
+    <div class="tag" align="center" style="margin-top: 70px; font-weight: bold;">
         Reset your username and password to the Lingo Mastery
     </div>
     <main>
@@ -77,14 +77,14 @@
                 </div>
                 <div class="input-icons">
                     <i style="margin:20px; margin-left: 29px; color: #42b72a;" class="fa-regular fa-user"></i>
-                    <input id="username" class="inp" value="" type="text" placeholder="username" />
+                    <input id="username" class="inp" value="" type="text" placeholder=" New Username" />
                 </div>
                 <div class="input-icons">
                     <i class="fa fa-key icon">
                     </i>
 
 
-                    <input id="password" class="inp" value="" type="password" placeholder="Password" />
+                    <input id="password" class="inp" value="" type="password" placeholder="New Password" />
 
                 </div>
                 <div>
@@ -144,7 +144,7 @@
                 })
                     .then(response => response.json())
                     .then(json => {
-                        alert("Hello! your username and password Updated . You can use your new username and password ");
+                        alert("Hello! your username and password Updated . Now you can use your new username and password ");
                         window.location.href = "./index.html";
                         console.log(json);
 

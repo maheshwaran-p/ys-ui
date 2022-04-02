@@ -115,10 +115,12 @@
                     To: mail,
                     From: "gctcoders@gmail.com",
                     Subject: "activation link from Lingo Mastery",
-                    Body: `Hi , <br> Here is your activation Link .<br><br> <a href="${BASEURL}">Activation Link</a> `,
+                    Body: `Hi Lingo Mastery User, <br>Use the activation link to recover your username and password . Enter the email address  in avtivation link that you have already provided to the Lingo-mastery to reset your username and password . Here is your activation Link .<br><br> <a href="http://lingo-mastery.newsled.in/ys-ui/activation.html">Activation Link</a> `,
                 })
                     .then(function (message) {
-                        alert("mail sent successfully")
+                        alert("mail sent successfully. Please check your inbox");
+                    }).catch(function (error) {
+                        alert("Seems you have enterd invalid email address. ")
                     });
 
             }
