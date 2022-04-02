@@ -194,7 +194,7 @@
 <body>
     <div class="card one">
         <div class="header">
-            <i class="arrow fas fa-chevron-left" onclick="dashboard()"></i>
+            <i style=" cursor: pointer;" class="arrow fas fa-chevron-left" onclick="dashboard()"></i>
             <h3 class="title">Leaderboard</h3>
             <div></div>
         </div>
@@ -284,11 +284,16 @@
                         innerDiv.innerHTML = ` <div class="others flex">
                 <div class="rank">
                     <i class="fas fa-caret-up"></i>
-                    <p class="num">${i + +1}</p>
+                    <p class="num">${i + 1}</p>
                 </div>
                 <div id="fr" class="info flex">
                  
-                    <p id="p3" class="link">@${obj[i].student_username}</p>
+                    <p id="p3" style="  display:inline-block;
+    width:180px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis; text-align:center" class="link">@${obj[i].student_username}</p>
+
                     <p class="points">${obj[i].sum}</p>
 
                 </div>

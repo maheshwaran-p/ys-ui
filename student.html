@@ -2,6 +2,8 @@
 <html lang="en">
 
 <head>
+    <script src="alert/dist/sweetalert-dev.js"></script>
+    <link rel="stylesheet" href="alert/dist/sweetalert.css">
     <script src="https://kit.fontawesome.com/dfbb4486c2.js" crossorigin="anonymous"></script>
     <meta charset=UTF-8>
     <script src="js/register.js"></script>
@@ -26,6 +28,7 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <script type="text/javascript"></script>
     <style type="text/css">
         a:link {
             text-decoration: none;
@@ -279,8 +282,50 @@
 
     </div>
     <script>
-        function credential() {
-            alert("This feature is in Progress!!!. Try this some time later.");
+        async function credential() {
+
+
+            let urlString =
+                window.location.href;
+            let paramString = urlString.split('?')[1];
+            let queryString = new URLSearchParams(paramString);
+            let pair = []
+            for (pair of queryString.entries()) {
+                console.log("Key is:" + pair[0]);
+                console.log("Value is:" + pair[1]);
+            }
+
+            console.log("username from url: " + pair[1]);
+
+
+            if (pair[1] == "undefined") {
+
+                alert("Hello! your session Expired . Please login to access this platform .");
+                window.location.href = "./index.html";
+
+
+            }
+            else {
+                await fetch(BASEURL + "/student/get/name/" + pair[1], {
+                    method: "GET",
+                })
+                    .then(response => response.json())
+                    .then(json => {
+                        console.log(json)
+
+                        console.log(json.id);
+
+
+                        alert("Hello!  " + pair[1] + ", \nHere is your Lingo Mastery Username and User Id . Use this Credentials to take tests.\n" + "Username : " + pair[1] + "\n UserId : LNMSUID" + json.id);
+                        // window.location.href = "./graph.html?username=" + pair[1] + "&id=" + json.id;
+                    }).catch(function (error) {
+
+                        alert("Hello! your session Expired . Please login to access this platform .");
+                        window.location.href = "./index.html";
+                    })
+
+
+            }
         }
 
         window.onload = tabledata();
