@@ -2,8 +2,8 @@
 
 
 
-BASEURL = 'http://65.1.65.90:4000';
-// BASEURL = 'http://localhost:4000';
+// BASEURL = 'http://65.1.65.90:4000';
+BASEURL = 'http://localhost:4000';
 async function postMarks(courseId, jsonArray) {
 
 
@@ -31,7 +31,8 @@ async function postMarks(courseId, jsonArray) {
             var x = document.getElementById("alreadytaken");
             x.className = "show";
             setTimeout(function () { x.className = x.className.replace("show", ""); }, 3000);
-            window.location.href = "./marks.html";
+            // window.location.href = "./marks.html";
+            location.reload(true);
 
         });
 
