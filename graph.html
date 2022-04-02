@@ -194,8 +194,12 @@
             // arrVisitors[3] = "2010, 700";
             // arrVisitors[4] = "2011, 800";
             // arrVisitors[5] = "2012, 975";
-            // arrVisitors[6] = "2013, 375";
+
             // arrVisitors[7] = "2014, 775";
+            // arrVisitors[6] = "90220, 37005";
+            // arrVisitors[7] = "301004, 00775";
+            // arrVisitors[6] = "90220, 37005";
+            // arrVisitors[7] = "301004, 00775";
 
 
 
@@ -205,7 +209,9 @@
                 console.log(arrVisitors[k]);
             }
 
+            console.log('after for loop');
             barChart();
+
 
         }
 
@@ -240,7 +246,7 @@
 
             //  console.log("In sette" + arrVisitors.length);
             // chart properties
-            cMargin = 25;
+            cMargin = 2;
             cSpace = 80;
             cHeight = canvas.height - 1 * cMargin - cSpace;
             cWidth = canvas.width - 1 * cMargin - cSpace;
@@ -262,7 +268,7 @@
             }
 
             totLabelsOnYAxis = 10;
-            context.font = "10pt Garamond";
+            context.font = "9pt Garamond";
 
             // initialize Animation variables
             ctr = 0;
@@ -319,7 +325,7 @@
             context.save();
 
             // Add Y Axis title
-            context.translate(cMargin + 10, cHeight / 2);
+            context.translate(cMargin + 20, cHeight / 2);
             context.rotate(Math.PI * -90 / 180);
             context.fillText('Percentage', 0, 0);
 
@@ -373,12 +379,12 @@
     </noscript>
 </head>
 
-<body style="" onload="barChart();">
+<body onload="barChart();">
 
 
     <div id="body">
 
-        <h1 align="center" style="margin: 30px; font-weight: 500; font-family: Arial, Helvetica, sans-serif;"
+        <h1 align="center" style="margin: 3px; font-weight: 500; font-family: Arial, Helvetica, sans-serif;"
             id="progress"></h1>
         <div id="dvTable" align="center">
 
@@ -398,7 +404,7 @@
             </div>
         </section>
         <section align="center" class="content-wrapper main-content clear-fix">
-            <canvas id="bchart" height="330" style="width: 50%; align-items: center;">
+            <canvas id="bchart" height="380" style="width: 100%; align-items: center;">
                 Your browser does not support HTML5 Canvas </canvas>
         </section>
     </div>
