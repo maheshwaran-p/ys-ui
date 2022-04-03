@@ -8,6 +8,7 @@
     <meta charset=UTF-8>
     <script src="js/register.js"></script>
     <script src="js/login.js"></script>
+    <link rel="stylesheet" href="css/login.css" />
 
     <link rel="stylesheet" href="css/student.scss" />
     <title>Student Profile</title>
@@ -223,7 +224,7 @@
     <div class="container">
         <div class="row">
 
-            <div class="col-md-4 col-xl-6">
+            <div onclick="toast();" class="col-md-4 col-xl-6">
                 <div class="card bg-c-green order-card">
                     <div class="card-block">
                         <h6 class="m-b-20"><a style="text-decoration: none;color:white;">View
@@ -281,7 +282,15 @@
 
 
     </div>
+
+
+    <div id="toast">You are Currently Staying on the Same!</div>
     <script>
+        function toast() {
+            var x = document.getElementById("toast");
+            x.className = "show";
+            setTimeout(function () { x.className = x.className.replace("show", ""); }, 3000);
+        }
         async function credential() {
 
 
@@ -379,6 +388,7 @@
             }
 
         }
+
 
         function leaderboard() {
 
@@ -574,6 +584,7 @@
 
 
     </script>
+
 
 </body>
 
