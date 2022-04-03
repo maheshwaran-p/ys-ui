@@ -8,9 +8,9 @@
     <meta charset=UTF-8>
     <script src="js/register.js"></script>
     <script src="js/login.js"></script>
-    <link rel="stylesheet" href="css/login.css" />
 
     <link rel="stylesheet" href="css/student.scss" />
+    <link rel="stylesheet" href="css/login.css" />
     <title>Student Profile</title>
 
 
@@ -282,12 +282,10 @@
 
 
     </div>
-
-
-    <div id="toast">You are Currently Staying on the Same!</div>
+    <div id="snackbar">You are Currently Staying on the Same!</div>
     <script>
         function toast() {
-            var x = document.getElementById("toast");
+            var x = document.getElementById("snackbar");
             x.className = "show";
             setTimeout(function () { x.className = x.className.replace("show", ""); }, 3000);
         }
@@ -388,7 +386,6 @@
             }
 
         }
-
 
         function leaderboard() {
 
@@ -584,7 +581,6 @@
 
 
     </script>
-
 
 </body>
 

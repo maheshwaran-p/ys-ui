@@ -252,10 +252,10 @@
 
     </div>
 
-    <div id="toast">You are Currently Staying on the Same!</div>
+    <div id="snackbar">You are Currently Staying on the Same!</div>
     <script>
         function toast() {
-            var x = document.getElementById("toast");
+            var x = document.getElementById("snackbar");
             x.className = "show";
             setTimeout(function () { x.className = x.className.replace("show", ""); }, 3000);
         }
