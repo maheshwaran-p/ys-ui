@@ -1,8 +1,27 @@
 
 
 BASEURL = 'http://13.234.213.95:4000';
-//BASEURL = 'http://localhost:4000';
-async function postMarks(courseId, jsonArray) {
+// BASEURL = 'http://localhost:4000';
+
+async function updateTotal(courseId) {
+
+
+    await fetch(BASEURL + "/total", {
+        method: "POST",
+        body: JSON.stringify({
+
+            total: document.getElementById('total').value,
+            addcourseId: courseId
+
+
+        }),
+
+        headers: {
+            "Content-type": "application/json; charset=UTF-8"
+        }
+    })
+}
+async function postMarks(courseId, jsonArrays) {
 
 
     // var Cid = localStorage['CourseId'];
@@ -14,7 +33,7 @@ async function postMarks(courseId, jsonArray) {
         method: "POST",
         body: JSON.stringify({
             addcourseId: courseId,
-            studentMark: jsonArray
+            studentMark: jsonArrays
 
         }),
 
@@ -24,7 +43,7 @@ async function postMarks(courseId, jsonArray) {
     })
         .then(response => response.json())
         .then(json => {
-            console.log(json)
+            // console.log(json)
 
             var x = document.getElementById("alreadytaken");
             x.className = "show";
@@ -35,23 +54,11 @@ async function postMarks(courseId, jsonArray) {
         });
 
 
-    console.log('cid:' + courseId + "total" + total);
+    console.log('cid:' + courseId);
 
 
 
-    await fetch(BASEURL + "/addcourse/total/" + courseId, {
-        method: "POST",
-        body: JSON.stringify({
 
-            total: document.getElementById('total').value,
-
-
-        }),
-
-        headers: {
-            "Content-type": "application/json; charset=UTF-8"
-        }
-    })
     // .then(response => response.json())
     // .then(json => console.log(json));
 
