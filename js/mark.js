@@ -1,6 +1,6 @@
 
 
-BASEURL = 'http://13.234.213.95:4000';
+BASEURL = 'http://65.0.119.56:4000';
 // BASEURL = 'http://localhost:4000';
 
 async function updateTotal(courseId) {
@@ -20,6 +20,16 @@ async function updateTotal(courseId) {
             "Content-type": "application/json; charset=UTF-8"
         }
     })
+        .then(response => response.json())
+        .then(json => {
+            // console.log(json)
+
+            var x = document.getElementById("totaltoast");
+            x.className = "show";
+            setTimeout(function () { x.className = x.className.replace("show", ""); }, 3000);
+            // window.location.href = "./marks.html";
+
+        });
 }
 async function postMarks(courseId, jsonArrays) {
 

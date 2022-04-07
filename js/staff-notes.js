@@ -1,5 +1,5 @@
 
-BASEURL = 'http://13.235.8.26:4000';
+BASEURL = 'http://65.0.119.56:4000';
 // BASEURL = 'http://localhost:4000';
 async function addnotes() {
 

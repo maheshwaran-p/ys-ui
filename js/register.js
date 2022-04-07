@@ -1,4 +1,4 @@
-BASEURL = 'http://13.234.213.95:4000';
+BASEURL = 'http://65.0.119.56:4000';
 // BASEURL = 'http://localhost:4000';
 
 function login() {
