@@ -44,9 +44,9 @@
             padding: 8px;
         }
 
-        tr:nth-child(even) {
-            background-color: #e9e8e8
-        }
+        /* tr:nth-child(even) {
+            background-color: #fbf5f5
+        } */
     </style>
     <link href="Content/Site.css" rel="stylesheet" type="text/css" />
     <title>Student Progress</title>
@@ -107,7 +107,7 @@
                         var percentage = (json[i].marks_mark / json[i].addcourse_total) * 100;
 
                         percentage = percentage.toString();
-
+                        percentage = Math.ceil(percentage);
                         console.log("title : " + json[i].addcourse_title);
                         console.log("percentage :    " + percentage);
                         per.push(percentage);
@@ -206,6 +206,7 @@
             for (var k = 0; k < per.length; k++) {
                 // arrVisitors[k] = `${tit[i]},${per[i]}`;
 
+                arrVisitors.reverse();
                 console.log(arrVisitors[k]);
             }
 
