@@ -6,7 +6,7 @@ BASEURL = 'http://65.0.119.56:4000';
 async function updateTotal(courseId) {
 
 
-    await fetch(BASEURL + "/addcourse/total" + courseId, {
+    await fetch(BASEURL + "/addcourse/total/" + courseId, {
         method: "POST",
         body: JSON.stringify({
 
