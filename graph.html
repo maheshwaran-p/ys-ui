@@ -48,7 +48,7 @@
             background-color: #fbf5f5
         } */
     </style>
-    <link href="Content/Site.css" rel="stylesheet" type="text/css" />
+    <!-- <link href="Content/Site.css" rel="stylesheet" type="text/css" /> -->
     <title>Student Progress</title>
     <script type="text/javascript">
 
@@ -93,6 +93,7 @@
                 .then(response => response.json())
                 .then(json => {
                     console.log(json)
+                    json.reverse();
 
                     // console.log("len: " + json.length);
                     // console.log("smark" + json[0].marks_mark);

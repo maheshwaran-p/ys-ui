@@ -202,7 +202,7 @@
         }
 
         .logout_btn:hover {
-            background: #0B87A6;
+            background: #a60b91;
         }
     </style>
 
@@ -268,7 +268,7 @@
     <input align="center" id="btn1" type="button" class="button" onclick="mark1()" value="Update Marks">
 
     <br><br>
-    <input type="text" id="total" name="total" value="" placeholder="Tatal Mark for this Course" required>
+    <input type="text" id="total" name="total" value="" placeholder="Total Mark for this Course" required>
     <br><br> <br>
 
     <input align="center" id="btn1" type="button" class="button" onclick="total1()" value="Update Total">
@@ -286,8 +286,36 @@
 
 
         window.onload = tabledata();
+        window.onload = totatload();
+
+        async function totatload() {
+            let urlString =
+                window.location.href;
+            let paramString = urlString.split('?')[1];
+            let queryString = new URLSearchParams(paramString);
+            let pair = []
+            for (pair of queryString.entries()) {
+                console.log("Key is:" + pair[0]);
+                console.log("Value is:" + pair[1]);
+            }
+
+            await fetch(BASEURL + '/addcourse/total/get/' + pair[1]).then(function (response) {
+                return response.json();
+
+            }).then(function (obj) {
+
+                console.log('total...............');
+                // console.log(obj);
+                console.log(obj.total);
+                document.getElementById('total').value = obj.total;
+
+            }).catch(function (error) {
+                console.log('error in total loading...')
+
+            })
 
 
+        }
 
         function newcourse() {
 
@@ -317,6 +345,8 @@
         ids = [];
 
         async function total1() {
+            var total = document.getElementById('total').value;
+            console.log(total)
             if (total != '') {
 
 
