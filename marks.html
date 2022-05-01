@@ -202,7 +202,7 @@
         }
 
         .logout_btn:hover {
-            background: #a60b91;
+            background: #0B87A6;
         }
     </style>
 
@@ -240,7 +240,7 @@
             </div>
 
 
-            <div class="col-md-4 col-xl-6" onclick="">
+            <div class="col-md-4 col-xl-6" onclick="validate()">
                 <div class="card bg-c-yellow order-card">
                     <div class="card-block">
                         <h6 class="m-b-20"> <a style="text-decoration: none;color:white;">
@@ -264,6 +264,10 @@
 
 
     </div>
+
+
+
+
     <br><br>
     <input align="center" id="btn1" type="button" class="button" onclick="mark1()" value="Update Marks">
 
@@ -277,6 +281,8 @@
     <div id="alreadytaken">Marks Successfully Posted!</div>
 
     <div id="totaltoast">Total Successfully Posted!</div>
+
+
 
     <br><br> <br><br> <br><br> <br><br> <br><br> <br><br>
 
@@ -321,6 +327,12 @@
 
 
             window.location.href = "./addnewcourse.html";
+
+        }
+        function validate() {
+
+
+            window.location.href = "./validation.html";
 
         }
 

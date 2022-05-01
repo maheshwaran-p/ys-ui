@@ -6,6 +6,7 @@
     <meta charset=UTF-8>
     <script src="js/register.js"></script>
     <script src="js/login.js"></script>
+    <link rel="stylesheet" href="css/login.css" />
     <script src="js/staff.js"></script>
 
     <title>Validate</title>
@@ -219,7 +220,7 @@
 
 
 
-            <div class="col-md-4 col-xl-6" onclick="">
+            <div class="col-md-4 col-xl-6" onclick="toast()">
                 <div class="card bg-c-yellow order-card">
                     <div class="card-block">
                         <h6 class="m-b-20"> <a style="text-decoration: none;color:white;">
@@ -242,7 +243,15 @@
 
 
     </div>
+
+    <div id="snackbar">You are Currently Staying on the Same!</div>
     <script>
+
+        function toast() {
+            var x = document.getElementById("snackbar");
+            x.className = "show";
+            setTimeout(function () { x.className = x.className.replace("show", ""); }, 3000);
+        }
 
 
         function newcourse() {
