@@ -1,4 +1,4 @@
-BASEURL = 'https://65.0.119.56:4000';
+BASEURL = 'http://65.0.119.56:4000';
 // BASEURL = 'https://localhost:4000';
 
 
