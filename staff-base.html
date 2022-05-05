@@ -274,6 +274,37 @@
         }
 
 
+        async function deleteCourse(id) {
+            console.log("ID")
+            console.log(id)
+
+            if (id !== "") {
+
+                id = parseInt(id)
+
+                console.log(id + 50)
+
+
+                await fetch(BASEURL + "/addcourse/delete/" + id, {
+                    method: "GET",
+                    // body: JSON.stringify({
+                    //     title: document.getElementById('title').value,
+                    //     description: document.getElementById('description').value,
+                    //     course: document.getElementById('link').value,
+                    //     stafflink: document.getElementById('stafflink').value,
+                    // }),
+
+                    headers: {
+                        "Content-type": "application/json; charset=UTF-8"
+                    }
+                })
+                    .then(response => response.json())
+                    .then(json => {
+                        console.log(json),
+                            location.reload(true);
+                    });
+            }
+        }
         async function tabledata() {
 
             await fetch(BASEURL + '/addcourse/response').then(function (response) {

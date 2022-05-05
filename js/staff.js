@@ -114,7 +114,7 @@ async function deleteNotes(id) {
         console.log(id + 50)
 
 
-        await fetch(BASEURL + "/addcourse/delete/" + id, {
+        await fetch(BASEURL + "/addnote/delete/" + id, {
             method: "GET",
             // body: JSON.stringify({
             //     title: document.getElementById('title').value,
