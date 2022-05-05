@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="js/login.js"></script>
+    <title>Add New Note</title>
+    <link rel="stylesheet" href="css/login.css">
+    <script src="js/staff-notes.js"></script>
+    <script src="js/staff.js"></script>
+    <header>
+        <h4 align="center" style="color: #fff;"> Add New Note</h4>
+        <div align="right" class="right_area">
+            <a onclick="" class="logout_btn">Add Quetions</a>
+        </div>
+    </header>
+</head>
+
+<body>
+
+    <main>
+        <div class="row">
+            <div class="colm-logo">
+
+
+            </div>
+
+            <!-- <h2 style="padding-bottom: 30px; padding-top: 40px;" align="center">Add New Course</h2> -->
+            <div class="colm-form">
+
+                <div class="form-container">
+                    <input class="inp" type="text" value="" id="title" placeholder="Course title" required>
+                    <input class="inp" type="text" value="" id="description" placeholder="Description" required>
+                    <input class="inp" type="text" value="" id="link" placeholder="Form Link for Students" required>
+                    <input class="inp" type="text" value="" id="stafflink" placeholder="Form Link for Staff" required>
+                    <button class="btn-login" onclick="edit()">Post</button>
+                    <!-- <a href="#">Forgotten password?</a> -->
+                    <!-- <button class="btn-new" onclick="addcourse()">Login</button> -->
+                </div>
+                <!-- <p><a href="#"><b>Create a Page</b></a> for a celebrity, brand or business.</p> -->
+            </div>
+        </div>
+    </main>
+
+
+    <style>
+        .left_area span {
+            color: #22242A;
+        }
+
+        .logout_btn {
+            padding: 5px;
+            background: #22242A;
+            text-decoration: none;
+            float: right;
+            /* margin-top: -30px; */
+            /* margin-right: 40px; */
+            border-radius: 2px;
+            font-size: 15px;
+            font-weight: 600;
+            color: #22242A;
+            transition: 0.5s;
+
+        }
+
+        .logout_btn:hover {
+            background: #22242A;
+        }
+
+        header {
+            position: fixed;
+            background: #22242A;
+            padding: 16px;
+            width: 100%;
+            z-index: 1;
+        }
+    </style>
+
+
+    <script>
+
+
+        window.onload = tabledata();
+        window.onload = loaddata();
+
+
+        async function loaddata() {
+
+            let urlString =
+                window.location.href;
+            let paramString = urlString.split('?')[1];
+            let queryString = new URLSearchParams(paramString);
+            let pair = []
+            for (pair of queryString.entries()) {
+                console.log("Key is:" + pair[0]);
+                console.log("Value is:" + pair[1]);
+            }
+            await fetch(BASEURL + '/addcourse/edit/get/' + pair[1]).then(function (response) {
+                return response.json();
+
+            }).then(function (obj) {
+
+                console.log('total...............');
+                // console.log(obj);
+                console.log(obj.total);
+                document.getElementById('title').value = obj.title;
+                document.getElementById('description').value = obj.description;
+                document.getElementById('link').value = obj.course;
+                document.getElementById('stafflink').value = obj.stafflink;
+
+            }).catch(function (error) {
+                console.log('error in total loading...')
+
+            })
+
+
+        }
+        async function tabledata() {
+
+
+            let urlString =
+                window.location.href;
+            let paramString = urlString.split('?')[1];
+            let queryString = new URLSearchParams(paramString);
+            let pair = []
+            for (pair of queryString.entries()) {
+                console.log("Key is:" + pair[0]);
+                console.log("Value is:" + pair[1]);
+            }
+
+
+
+
+        }
+
+        async function edit() {
+
+            let urlString =
+                window.location.href;
+            let paramString = urlString.split('?')[1];
+            let queryString = new URLSearchParams(paramString);
+            let pair = []
+            for (pair of queryString.entries()) {
+                console.log("Key is:" + pair[0]);
+                console.log("Value is:" + pair[1]);
+            }
+            await editcourse2(pair[1]);
+        }
+
+
+        async function editcourse2(id) {
+
+
+
+            console.log(document.getElementById('title').value)
+
+
+            var title = document.getElementById('title').value;
+            var description = document.getElementById('description').value;
+            var link = document.getElementById('link').value;
+            var link = document.getElementById('stafflink').value;
+
+
+
+            console.log(link);
+            if (title != '' && description != '' && link != '' && stafflink != '') {
+
+                console.log('hii');
+
+                await fetch(BASEURL + "/addcourse/edit/" + id, {
+                    method: "POST",
+                    body: JSON.stringify({
+                        title: document.getElementById('title').value,
+                        description: document.getElementById('description').value,
+                        course: document.getElementById('link').value,
+                        stafflink: document.getElementById('stafflink').value,
+                    }),
+
+                    headers: {
+                        "Content-type": "application/json; charset=UTF-8"
+                    }
+                })
+                    .then(response => response.json())
+                    .then(json => console.log(json));
+
+
+            }
+            if (title != '' && description != '' && link != '' && stafflink != '') {
+                window.location.href = "./staff-base.html";
+
+            }
+        }
+
+
+
+    </script>
+</body>
+
+</html>
