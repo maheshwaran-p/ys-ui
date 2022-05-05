@@ -6,7 +6,7 @@
     <script src="js/login.js"></script>
     <meta charset=UTF-8>
     <script src="js/register.js"></script>
-
+    <!-- <script src="js/staff.js"></script> -->
     <title>Add New Note</title>
 
 
@@ -280,7 +280,7 @@
                 console.log(obj);
 
 
-                courses.push(["   Title    ", "  Description    ", " Notes "]);
+                courses.push(["   Title    ", "  Description    ", " Notes ", "Delete"]);
 
                 for (var i = 0; i < obj.length; i++) {
 
@@ -290,17 +290,19 @@
                     var tit = obj[i].title;
                     var des = obj[i].description;
                     var li = obj[i].link;
+                    let id1 = obj[i].id;
 
-
+                    console.log(id1)
                     let link_attributes = {
                         target: '_blank',
                         class: 'mylink',
                         rel: 'nofollow noopener'
                     };
                     let result = convert_url(li, link_attributes);
-
                     console.log(result);
-                    courses.push([tit, des, result])
+                    let result3 = convert_url3(id1, "https://delete/course/", link_attributes);
+                    console.log(result3);
+                    courses.push([tit, des, result, result3])
 
                     console.log(tit);
 
@@ -363,6 +365,39 @@
             })
         }
 
+        async function deleteNotes(id) {
+            console.log("ID")
+            console.log(id)
+
+            if (id !== "") {
+
+                id = parseInt(id)
+
+                console.log(id + 50)
+
+
+                await fetch(BASEURL + "/addnote/delete/" + id, {
+                    method: "GET",
+                    // body: JSON.stringify({
+                    //     title: document.getElementById('title').value,
+                    //     description: document.getElementById('description').value,
+                    //     course: document.getElementById('link').value,
+                    //     stafflink: document.getElementById('stafflink').value,
+                    // }),
+
+                    headers: {
+                        "Content-type": "application/json; charset=UTF-8"
+                    }
+
+                })
+                    .then(response => response.json())
+                    .then(json => {
+                        console.log(json),
+                        location.reload(true);
+                    });
+            }
+        }
+
 
         function taketest(course) {
 
@@ -371,6 +406,35 @@
         }
 
 
+        function convert_url3(id1, text, link_attributes_obj = {}) {
+
+
+
+            //link_attributes_obj (optional) object {target:'_blank', class:'myLink'}
+
+            //html to text
+            text = text.replace(/</g, '&lt;');
+            text = text.replace(/>/g, '&gt;');
+
+            let attr = [];
+            for (let k in link_attributes_obj) {
+                if (k !== 'href') {
+                    attr.push(k + '="' + link_attributes_obj[k].replaceAll(/"/g, "'") + '"');
+                }
+            }
+
+            //URLs starting with http://, https://, or ftp://
+            let exp = /((?:https?|ftp):\/\/[a-zA-Z0-9][\w+\d+&@\-#\/%?=~_|!:,.;+]*)/gim;
+            text = text.replace(exp, '<a onclick="javascript: deleteNotes(\'' + id1 + '\')">delete</a>');
+
+            //URLs starting with www.
+            let reg_ww = /(?<!\/)(www\.[a-zA-Z0-9][\w+\d+&@\-#\/%?=~_|!:,.;+]*)/gim;
+            text = text.replace(reg_ww, '<a onclick="javascript: deleteNotes(\'' + id1 + '\')">delete</a>');
+            // deleteCourse(id1);
+
+
+            return text;
+        }
 
         function convert_url(text, link_attributes_obj = {}) {
             //link_attributes_obj (optional) object {target:'_blank', class:'myLink'}

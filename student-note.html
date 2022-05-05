@@ -6,6 +6,7 @@
     <meta charset=UTF-8>
     <script src="js/register.js"></script>
     <script src="js/login.js"></script>
+    <script src="js/staff.js"></script>
 
     <title>Student Profile</title>
 
@@ -415,6 +416,36 @@
         }
 
 
+
+        function convert_url3(id1, text, link_attributes_obj = {}) {
+
+
+
+            //link_attributes_obj (optional) object {target:'_blank', class:'myLink'}
+
+            //html to text
+            text = text.replace(/</g, '&lt;');
+            text = text.replace(/>/g, '&gt;');
+
+            let attr = [];
+            for (let k in link_attributes_obj) {
+                if (k !== 'href') {
+                    attr.push(k + '="' + link_attributes_obj[k].replaceAll(/"/g, "'") + '"');
+                }
+            }
+
+            //URLs starting with http://, https://, or ftp://
+            let exp = /((?:https?|ftp):\/\/[a-zA-Z0-9][\w+\d+&@\-#\/%?=~_|!:,.;+]*)/gim;
+            text = text.replace(exp, '<a onclick="javascript: deleteCourse(\'' + id1 + '\')">delete</a>');
+
+            //URLs starting with www.
+            let reg_ww = /(?<!\/)(www\.[a-zA-Z0-9][\w+\d+&@\-#\/%?=~_|!:,.;+]*)/gim;
+            text = text.replace(reg_ww, '<a onclick="javascript: deleteCourse(\'' + id1 + '\')">delete</a>');
+            // deleteCourse(id1);
+
+
+            return text;
+        }
 
         function convert_url(text, link_attributes_obj = {}) {
             //link_attributes_obj (optional) object {target:'_blank', class:'myLink'}

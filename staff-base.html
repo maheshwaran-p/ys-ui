@@ -288,7 +288,7 @@
                 console.log(obj);
 
 
-                courses.push(["   Title    ", "  Description    ", " Response", "Delete"]);
+                courses.push(["   Title    ", "  Description    ", " Response", "Delete", "Edit"]);
 
                 for (var i = 0; i < obj.length; i++) {
 
@@ -317,9 +317,10 @@
                     let result2 = convert_url(staff, link_attributes);
 
                     let result3 = convert_url3(id1, "https://delete/course/", link_attributes);
+                    let result4 = convert_url_eidt(id1, "https://edit/course/", link_attributes);
 
 
-                    courses.push([tit, des, result2, result3])
+                    courses.push([tit, des, result2, result3, result4])
 
                     console.log(tit);
 
@@ -392,6 +393,37 @@
         }
 
 
+        function convert_url_eidt(id1, text, link_attributes_obj = {}) {
+
+
+
+            //link_attributes_obj (optional) object {target:'_blank', class:'myLink'}
+
+            //html to text
+            text = text.replace(/</g, '&lt;');
+            text = text.replace(/>/g, '&gt;');
+
+            let attr = [];
+            for (let k in link_attributes_obj) {
+                if (k !== 'href') {
+                    attr.push(k + '="' + link_attributes_obj[k].replaceAll(/"/g, "'") + '"');
+                }
+            }
+
+            //URLs starting with http://, https://, or ftp://
+            let exp = /((?:https?|ftp):\/\/[a-zA-Z0-9][\w+\d+&@\-#\/%?=~_|!:,.;+]*)/gim;
+            text = text.replace(exp, '<a onclick="javascript: editCourse(\'' + id1 + '\')">Edit</a>');
+
+            //URLs starting with www.
+            let reg_ww = /(?<!\/)(www\.[a-zA-Z0-9][\w+\d+&@\-#\/%?=~_|!:,.;+]*)/gim;
+            text = text.replace(reg_ww, '<a onclick="javascript: editCourse(\'' + id1 + '\')">Edit</a>');
+            // deleteCourse(id1);
+
+
+            return text;
+        }
+
+
 
         function convert_url3(id1, text, link_attributes_obj = {}) {
 
@@ -412,11 +444,11 @@
 
             //URLs starting with http://, https://, or ftp://
             let exp = /((?:https?|ftp):\/\/[a-zA-Z0-9][\w+\d+&@\-#\/%?=~_|!:,.;+]*)/gim;
-            text = text.replace(exp, '<a onclick="javascript: deleteCourse(\'' + id1 + '\')">delete</a>');
+            text = text.replace(exp, '<a onclick="javascript: deleteCourse(\'' + id1 + '\')">Delete</a>');
 
             //URLs starting with www.
             let reg_ww = /(?<!\/)(www\.[a-zA-Z0-9][\w+\d+&@\-#\/%?=~_|!:,.;+]*)/gim;
-            text = text.replace(reg_ww, '<a onclick="javascript: deleteCourse(\'' + id1 + '\')">delete</a>');
+            text = text.replace(reg_ww, '<a onclick="javascript: deleteCourse(\'' + id1 + '\')">Delete</a>');
             // deleteCourse(id1);
 
 
