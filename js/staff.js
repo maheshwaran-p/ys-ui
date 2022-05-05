@@ -170,6 +170,11 @@ async function addcourse() {
 
 
     }
+    else {
+        var x = document.getElementById("snackbar");
+        x.className = "show";
+        setTimeout(function () { x.className = x.className.replace("show", ""); }, 3000);
+    }
     if (title != '' && description != '' && link != '' && stafflink != '') {
         window.location.href = "./staff-base.html";
 

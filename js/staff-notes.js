@@ -25,6 +25,11 @@ async function addnotes() {
             .then(response => response.json())
             .then(json => console.log(json));
     }
+    else {
+        var x = document.getElementById("snackbar");
+        x.className = "show";
+        setTimeout(function () { x.className = x.className.replace("show", ""); }, 3000);
+    }
     if (title != '' && description != '' && link != '') {
         window.location.href = "./staff-note.html";
 
