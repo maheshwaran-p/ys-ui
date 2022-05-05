@@ -424,6 +424,23 @@
         }
 
 
+        async function editCourse(id) {
+            console.log('id in editcourse js function.....')
+            console.log("ID")
+            console.log(id)
+
+            if (id !== "") {
+
+                id = parseInt(id)
+
+                console.log(id + 50);
+
+
+                window.location.href = "./editcourse.html?cid=" + id;
+
+            }
+
+        }
 
         function convert_url3(id1, text, link_attributes_obj = {}) {
 
